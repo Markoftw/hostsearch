@@ -1,0 +1,51 @@
+<style>
+    .dHeader {
+        padding: 30px;
+        background-color: #039BE5 !important;
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .dContent {
+        margin-top: 35px;
+    }
+    .dContent > * {
+        margin: 10px;
+    }
+    .modal-dialog{
+        width:400px; height: 400px;
+        position: absolute;
+        top:0; bottom: 0; left: 0; right: 0;
+        margin: auto
+    }
+</style>
+
+<div layout="column">
+    <md-dialog ng-controller="RegisterDialogController as vm" class="modal-dialog">
+        <form name="registerForm" ng-submit="vm.register()">
+            <md-dialog-content>
+                <h2 class="md-title dHeader">
+                    Register
+                </h2>
+                <div class="dContent">
+                    <md-input-container class="md-block">
+                        <label for="user">Username:</label>
+                        <input type="text" id="user" name="user" ng-model="vm.username" required/>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" ng-model="vm.usermail" required/>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" ng-model="vm.userpass" required/>
+                    </md-input-container>
+                </div>
+                <md-dialog-actions layout="row">
+                    <md-button class="md-primary" ng-class="{'md-raised md-hue-1' : (registerForm.$dirty && registerForm.$valid)}" type="submit">Register</md-button>
+                    <md-button type="button" ng-click="vm.cancel()">Cancel</md-button>
+                </md-dialog-actions>
+            </md-dialog-content>
+        </form>
+    </md-dialog>
+</div>

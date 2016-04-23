@@ -1,0 +1,63 @@
+<!--<div layout="row" layout-padding class="bg-dark-blue nav-dark" layout-align="space-between center">
+    <div>
+        <md-button>Home</md-button>
+        <md-button>Item 1</md-button>
+        <md-button>Item 2</md-button>
+        <md-menu>
+            <md-button md-menu-origin ng-click="$mdOpenMenu()">Help</md-button>
+            <md-menu-content width="2">
+                <md-menu-item>
+                    <md-button>Help</md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>About</md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+    <div class="nav-buttons">
+        <md-button class="md-raised md-accent">My profile</md-button>
+        <md-button class="md-raised md-warn">Log Out</md-button>
+    </div>
+</div>-->
+
+<md-toolbar layout-padding>
+    <div class="md-toolbar-tools">
+        <div layout="row" layout-align="space-between center" layout-fill>
+            <sidenav-button></sidenav-button>
+            <h3>
+                <span><a ui-sref="app.landing" class="removeLink">Server Finder</a></span>
+            </h3>
+            <span flex></span>
+            <div class="navItems" hide-sm hide-xs>
+                <md-button ui-sref="app.landing" ui-sref-active="md-raised">Home</md-button>
+                <md-button ui-sref="app.advanced_search" ui-sref-active="md-raised">Advanced search</md-button>
+                <md-button ui-sref="app.contact" ui-sref-active="md-raised">Contact</md-button>
+            </div>
+            <span flex></span>
+            <auth-buttons></auth-buttons>
+        </div>
+    </div>
+</md-toolbar>
+
+<sidenav-left></sidenav-left>
+<!--<md-toolbar class="top-fixed">
+    <div class="md-toolbar-tools">
+        <div layout="row" layout-align="space-between center" layout-fill>
+            <sidenav-button></sidenav-button>
+            <h3>
+                <span><a ui-sref="app.landing" class="removeLink">Server Finder</a></span>
+            </h3>
+            <span flex></span>
+            <div class="navItems" hide-sm hide-xs>
+                <md-button ui-sref="app.landing" ui-sref-active="md-raised">Home</md-button>
+                <md-button ui-sref="app.advanced_search" ui-sref-active="md-raised">Advanced search</md-button>
+                <md-button ui-sref="app.contact" ui-sref-active="md-raised">Contact</md-button>
+            </div>
+            <span flex></span>
+            <auth-buttons></auth-buttons>
+        </div>
+    </div>
+</md-toolbar>
+
+<sidenav-left></sidenav-left>-->

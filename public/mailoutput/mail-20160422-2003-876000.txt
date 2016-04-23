@@ -1,0 +1,17 @@
+To: marko.smej55@gmail.com
+Subject: Password reset link
+Message-ID: <d6ecba019d7f3b304239617e52b8d927@localhost>
+Date: Fri, 22 Apr 2016 20:03:10 +0000
+From: marko@marefx.com
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Your reset password link:
+
+<a href=3D"http://localhost:8000/#/reset-pas=
+sword/marko.smej55@gmail.com/kdScurlB9q">
+http://localhost:8000/#/reset-p=
+assword/marko.smej55@gmail.com/kdScurlB9q
+</a>
+

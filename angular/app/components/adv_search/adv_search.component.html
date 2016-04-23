@@ -1,0 +1,154 @@
+<md-content class="md-padding" layout-sm="column" layout-xs="column" layout="row">
+    <div flex-xs flex-sm flex-gt-sm="25" layout="column">
+        <md-card md-whiteframe="6">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Filter your results</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-divider></md-divider>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-title search-title-1">Location</span>
+                    <md-checkbox ng-model="vm.locations.europe" aria-label="Checkbox 1" class="md-primary">
+                        Europe
+                    </md-checkbox>
+                    <md-checkbox ng-model="vm.locations.america" aria-label="Checkbox 2" class="md-primary">
+                        America
+                    </md-checkbox>
+                    <md-checkbox ng-model="vm.locations.asia" aria-label="Checkbox 3" class="md-primary">
+                        Asia
+                    </md-checkbox>
+                    <md-checkbox ng-model="vm.locations.other" aria-label="Checkbox 4" class="md-primary">
+                        Other
+                    </md-checkbox>
+                </md-card-title-text>
+            </md-card-title>
+            <md-divider></md-divider>
+            <md-card-title>
+                <md-card-title-text>
+                    <md-slider-container>
+                        <span class="md-title search-title-1">I am prepared to pay: {{ vm.sliders.priceSlider | currency }}</span>
+                        <md-slider flex ng-model="vm.sliders.priceSlider" min="0" max="500" aria-label="blue"
+                                   id="price-slider" class="md-primary">
+                        </md-slider>
+                    </md-slider-container>
+                </md-card-title-text>
+            </md-card-title>
+            <md-divider></md-divider>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-title search-title-1">RAM type:</span>
+                    <md-checkbox ng-model="vm.ram.ddr3" aria-label="Checkbox 13" class="md-primary">
+                        DDR3
+                    </md-checkbox>
+                    <md-checkbox ng-model="vm.ram.ddr4" aria-label="Checkbox 14" class="md-primary">
+                        DDR4
+                    </md-checkbox>
+                    <md-checkbox ng-model="vm.ram.ecc" aria-label="Checkbox 12" class="md-primary">
+                        ECC
+                    </md-checkbox>
+                    <md-slider-container>
+                        <span class="md-title">At least {{ vm.sliders.ramSlider }}GB of RAM</span>
+                        <md-slider flex ng-model="vm.sliders.ramSlider" min="0" max="48" step="0.1" aria-label="blue"
+                                   id="ram-slider" class="md-primary">
+                        </md-slider>
+                    </md-slider-container>
+                </md-card-title-text>
+            </md-card-title>
+            <md-divider></md-divider>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-title search-title-1">Hard drive type:</span>
+                    <md-checkbox ng-model="vm.hdd.ssd" aria-label="Checkbox 9" class="md-primary">
+                        SSD
+                    </md-checkbox>
+                    <md-checkbox ng-model="vm.hdd.hdd" aria-label="Checkbox 10" class="md-primary">
+                        HDD
+                    </md-checkbox>
+                    <md-checkbox ng-model="vm.hdd.hybrid" aria-label="Checkbox 11" class="md-primary">
+                        Hybrid
+                    </md-checkbox>
+                    <md-slider-container>
+                        <span class="md-title">At least {{ vm.sliders.hddSlider }}GB of space</span>
+                        <md-slider flex ng-model="vm.sliders.hddSlider" min="0" max="30000" step="100" aria-label="blue"
+                                   id="hdd-slider" class="md-primary">
+                        </md-slider>
+                    </md-slider-container>
+                </md-card-title-text>
+            </md-card-title>
+            <md-divider></md-divider>
+            <md-card-title>
+                <md-card-title-text>
+                    <md-slider-container>
+                        <span class="md-title search-title-1">At least {{ vm.sliders.cpuSlider }}GHz CPU</span>
+                        <md-slider flex ng-model="vm.sliders.cpuSlider" min="0" max="5" step="0.1" aria-label="blue"
+                                   id="cpu-slider" class="md-primary">
+                        </md-slider>
+                    </md-slider-container>
+                </md-card-title-text>
+            </md-card-title>
+            <md-divider></md-divider>
+            <md-card-title>
+                <md-card-title-text>
+                    <md-slider-container>
+                        <span class="md-title search-title-1">At least {{ vm.sliders.bwSlider }}TB Bandwidth</span>
+                        <md-slider flex ng-model="vm.sliders.bwSlider" min="0" max="100" aria-label="blue"
+                                   id="bw-slider" class="md-primary">
+                        </md-slider>
+                    </md-slider-container>
+                </md-card-title-text>
+            </md-card-title>
+            <md-divider></md-divider>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-title search-title-1">Platform</span>
+                    <md-checkbox ng-model="vm.platform.unix" aria-label="Checkbox 5" class="md-primary">
+                        Unix/Linux
+                    </md-checkbox>
+                    <md-checkbox ng-model="vm.platform.windows" aria-label="Checkbox 6" class="md-primary">
+                        Windows
+                    </md-checkbox>
+                    <md-checkbox ng-model="vm.platform.macintosh" aria-label="Checkbox 7" class="md-primary">
+                        Macintosh
+                    </md-checkbox>
+                    <md-checkbox ng-model="vm.platform.other" aria-label="Checkbox 8" class="md-primary">
+                        Other
+                    </md-checkbox>
+                </md-card-title-text>
+            </md-card-title>
+            <md-divider></md-divider>
+            <md-card-title>
+                <md-card-title-text>
+                    Need a custom filter, something's missing? Let us know!
+                </md-card-title-text>
+            </md-card-title>
+        </md-card>
+    </div> <!-- filter: { price: '45' } -->
+    <div flex-xs flex-sm flex-gt-sm="75" layout="column">
+        <md-card md-whiteframe="6"
+                 ng-repeat="server in filtered=(vm.servers | moreThan:vm.sliders | chkLoc:vm.locations | chkRam:vm.ram | chkPlatform:vm.platform | chkHdd:vm.hdd) | orderBy:'+price' | limitTo: 5">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Provider: {{ server.provider }}</span>
+                    <md-divider></md-divider>
+                    <span class="md-subhead">Location: {{ server.location }}</span>
+                    <span class="md-subhead">Price: {{ server.price | currency }}</span>
+                    <span class="md-subhead">Setup fee: {{ server.setupfee | currency }}</span>
+                    <span class="md-subhead">RAM: {{ server.ram }}GB, type: {{ server.ramtype }}</span>
+                    <span class="md-subhead">CPU: {{ server.cpu }}GHz</span>
+                    <span class="md-subhead">HDD: {{ server.hdd }}GB, type: {{ server.hddtype }}</span>
+                    <span class="md-subhead">OS: {{ server.os }}</span>
+                    <span class="md-subhead">Bandwidth: {{ server.bw }}TB</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                    <div class="md-media-lg card-media"></div>
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button>Order</md-button>
+                <md-button>View</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content>

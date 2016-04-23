@@ -1,0 +1,56 @@
+<style>
+    .dHeader {
+        background-color: #039BE5 !important;
+        color: white;
+        font-size: 20px;
+        padding: 1px 30px;
+    }
+    .dContent {
+        margin-top: 35px;
+    }
+    .dContent > * {
+        margin: 10px;
+    }
+    .modal-dialog{
+        width:400px; height: 325px;
+        position: absolute;
+        top:0; bottom: 0; left: 0; right: 0;
+        margin: auto
+    }
+    .remove-link{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+
+<div layout="column">
+    <md-dialog ng-controller="LoginDialogController as vm" class="modal-dialog">
+        <form name="loginForm" ng-submit="vm.login()">
+            <md-dialog-content>
+                <div class="md-title dHeader">
+                    <h2 layout="space-between center">
+                        <span>Login</span>
+                        <span flex></span>
+                        <md-progress-circular ng-if="vm.LoggingIn" class="md-warn" md-mode="indeterminate" md-diameter="50"></md-progress-circular>
+                    </h2>
+                </div>
+                <div class="dContent">
+                    <md-input-container class="md-block">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" ng-model="vm.usermail" required/>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" ng-model="vm.userpass" required/>
+                    </md-input-container>
+                </div>
+                <md-dialog-actions layout="row">
+                    <a class="remove-link" ui-sref="app.forgot_password" ng-click="vm.cancel()">Forgot password?</a>
+                    <span flex></span>
+                    <md-button class="md-primary" ng-class="{'md-raised md-hue-1' : (loginForm.$dirty && loginForm.$valid)}" type="submit">Login</md-button>
+                    <md-button type="button" ng-click="vm.cancel()">Cancel</md-button>
+                </md-dialog-actions>
+            </md-dialog-content>
+        </form>
+    </md-dialog>
+</div>
