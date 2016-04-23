@@ -4,7 +4,7 @@
 git pull
 composer install #--no-dev
 php artisan migrate --force
-php artisan route:cache
-php artisan config:cache
+#php artisan route:cache
+#php artisan config:cache
 php artisan clear-compiled
 php artisan optimize

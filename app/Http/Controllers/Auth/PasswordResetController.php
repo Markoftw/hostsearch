@@ -29,8 +29,8 @@ class PasswordResetController extends Controller
 
         Mail::send('auth.reset_link', compact('email', 'token'), function ($mail) use ($email) {
             $mail->to($email)
-            ->from('marko@marefx.com')
-            ->subject('Password reset link');
+            ->from('support@marefx.com')
+            ->subject('Reset your Server Finder password');
         });
 
         return response()->success(true);
