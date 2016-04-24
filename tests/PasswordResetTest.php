@@ -12,9 +12,9 @@ class PasswordResetTest extends TestCase
         $user = factory(App\User::class)->create();
 
         $this->checkEmailContent([
-            'title'   => 'Password reset link',
+            'title'   => 'Reset your Server Finder password',
             'email'   => $user->email,
-            'content' => 'reset password link', //contains
+            'content' => 'reset your password', //contains
         ]);
 
         $this->post('/api/auth/password/email', ['email' => $user->email])
