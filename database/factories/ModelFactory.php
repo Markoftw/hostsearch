@@ -26,3 +26,57 @@ $factory->define(App\PasswordReset::class, function (Faker\Generator $faker) {
         'token' => str_random(10),
     ];
 });
+
+$factory->define(App\ServerProvider::class, function (Faker\Generator $faker) {
+    return [
+        'provider'  => $faker->company,
+        'website' => $faker->domainName,
+        'open_year' => $faker->year,
+        'slogan' => $faker->paragraph,
+        'description' => $faker->paragraph,
+        'operating_country' => $faker->country,
+        'ceo' => $faker->name
+    ];
+});
+
+$factory->define(App\DedicatedServer::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'url' => $faker->domainName,
+        'location' => $faker->country,
+        'server_price' => $faker->numberBetween(1, 250),
+        'setup_price' => $faker->numberBetween(1,25),
+        'ram_type' => $faker->randomElement(['DDR3', 'DDR4', 'ECC']),
+        'ram_size' => $faker->numberBetween(1,48),
+        'hdd_type' => $faker->randomElement(['HDD', 'SSD', 'Hybrid']),
+        'hdd_size' => $faker->numberBetween(120,10000),
+        'cpu_version' => $faker->word,
+        'cpu_cores' => $faker->numberBetween(1, 32),
+        'cpu_power' => $faker->numberBetween(1, 5),
+        'bandwidth_tb' => $faker->numberBetween(1, 100),
+        'num_ips' => $faker->numberBetween(1, 16),
+        'platform_os' => $faker->randomElement(['Linux', 'Windows', 'OSX']),
+        'other_info' => $faker->paragraph
+    ];
+});
+
+$factory->define(App\VPSServer::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'url' => $faker->domainName,
+        'location' => $faker->country,
+        'server_price' => $faker->numberBetween(1, 250),
+        'setup_price' => $faker->numberBetween(1,25),
+        'ram_type' => $faker->randomElement(['DDR3', 'DDR4', 'ECC']),
+        'ram_size' => $faker->numberBetween(1,48),
+        'hdd_type' => $faker->randomElement(['HDD', 'SSD', 'Hybrid']),
+        'hdd_size' => $faker->numberBetween(120,10000),
+        'cpu_version' => $faker->word,
+        'cpu_cores' => $faker->numberBetween(1, 32),
+        'cpu_power' => $faker->numberBetween(1, 5),
+        'bandwidth_tb' => $faker->numberBetween(1, 100),
+        'num_ips' => $faker->numberBetween(1, 16),
+        'platform_os' => $faker->randomElement(['Linux', 'Windows', 'OSX']),
+        'other_info' => $faker->paragraph
+    ];
+});

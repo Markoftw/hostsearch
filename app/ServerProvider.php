@@ -24,4 +24,13 @@ class ServerProvider extends Model
         return $this->hasMany(DedicatedServer::class); // 'App\DedicatedServer'
     }
 
+    /**
+     * Get all Virtual private servers for a Provider
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function vps()
+    {
+        return $this->hasMany(VPSServer::class); // 'App\VPSServer'
+    }
+
 }
