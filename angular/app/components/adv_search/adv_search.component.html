@@ -130,16 +130,16 @@
                  ng-repeat="server in filtered=(vm.servers | moreThan:vm.sliders | chkLoc:vm.locations | chkRam:vm.ram | chkPlatform:vm.platform | chkHdd:vm.hdd) | orderBy:'+price' | limitTo: 5">
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline">Provider: {{ server.provider }}</span>
+                    <span class="md-headline">Provider: {{ server.provider.provider_name }}</span>
                     <md-divider></md-divider>
                     <span class="md-subhead">Location: {{ server.location }}</span>
-                    <span class="md-subhead">Price: {{ server.price | currency }}</span>
-                    <span class="md-subhead">Setup fee: {{ server.setupfee | currency }}</span>
-                    <span class="md-subhead">RAM: {{ server.ram }}GB, type: {{ server.ramtype }}</span>
-                    <span class="md-subhead">CPU: {{ server.cpu }}GHz</span>
-                    <span class="md-subhead">HDD: {{ server.hdd }}GB, type: {{ server.hddtype }}</span>
-                    <span class="md-subhead">OS: {{ server.os }}</span>
-                    <span class="md-subhead">Bandwidth: {{ server.bw }}TB</span>
+                    <span class="md-subhead">Price: {{ server.server_price | currency }}</span>
+                    <span class="md-subhead">Setup fee: {{ server.setup_price | currency }}</span>
+                    <span class="md-subhead">RAM: {{ server.ram_size }}GB, type: {{ server.ram_type }}</span>
+                    <span class="md-subhead">CPU: {{ server.cpu_power }}GHz</span>
+                    <span class="md-subhead">HDD: {{ server.hdd_size }}GB, type: {{ server.hdd_type }}</span>
+                    <span class="md-subhead">OS: {{ server.platform_os }}</span>
+                    <span class="md-subhead">Bandwidth: {{ server.bandwidth_tb }}TB</span>
                 </md-card-title-text>
                 <md-card-title-media>
                     <div class="md-media-lg card-media"></div>

@@ -29,7 +29,7 @@ $factory->define(App\PasswordReset::class, function (Faker\Generator $faker) {
 
 $factory->define(App\ServerProvider::class, function (Faker\Generator $faker) {
     return [
-        'provider'  => $faker->company,
+        'provider_name'  => $faker->company,
         'website' => $faker->domainName,
         'open_year' => $faker->year,
         'slogan' => $faker->paragraph,
@@ -43,7 +43,7 @@ $factory->define(App\DedicatedServer::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'url' => $faker->domainName,
-        'location' => $faker->country,
+        'location' => $faker->randomElement(['Europe', 'America', 'Asia', 'Other']),
         'server_price' => $faker->numberBetween(1, 250),
         'setup_price' => $faker->numberBetween(1,25),
         'ram_type' => $faker->randomElement(['DDR3', 'DDR4', 'ECC']),
@@ -55,7 +55,7 @@ $factory->define(App\DedicatedServer::class, function (Faker\Generator $faker) {
         'cpu_power' => $faker->numberBetween(1, 5),
         'bandwidth_tb' => $faker->numberBetween(1, 100),
         'num_ips' => $faker->numberBetween(1, 16),
-        'platform_os' => $faker->randomElement(['Linux', 'Windows', 'OSX']),
+        'platform_os' => $faker->randomElement(['Linux', 'Windows', 'Macintosh']),
         'other_info' => $faker->paragraph
     ];
 });
@@ -64,7 +64,7 @@ $factory->define(App\VPSServer::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'url' => $faker->domainName,
-        'location' => $faker->country,
+        'location' => $faker->randomElement(['Europe', 'America', 'Asia', 'Other']),
         'server_price' => $faker->numberBetween(1, 250),
         'setup_price' => $faker->numberBetween(1,25),
         'ram_type' => $faker->randomElement(['DDR3', 'DDR4', 'ECC']),
@@ -76,7 +76,7 @@ $factory->define(App\VPSServer::class, function (Faker\Generator $faker) {
         'cpu_power' => $faker->numberBetween(1, 5),
         'bandwidth_tb' => $faker->numberBetween(1, 100),
         'num_ips' => $faker->numberBetween(1, 16),
-        'platform_os' => $faker->randomElement(['Linux', 'Windows', 'OSX']),
+        'platform_os' => $faker->randomElement(['Linux', 'Windows', 'Macintosh']),
         'other_info' => $faker->paragraph
     ];
 });

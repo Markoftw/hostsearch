@@ -9,13 +9,13 @@ export function ChkHddFilter(){
                 if (checkbox.ssd == false && checkbox.hdd == false && checkbox.hybrid == false) {
                     filtered.push(item);
                 }
-                else if (checkbox.ssd == true && (item.hddtype == 'ssd')) {
+                else if (checkbox.ssd == true && (item.hdd_type).toLowerCase() == 'ssd') {
                     filtered.push(item);
                 }
-                else if (checkbox.hdd == true && item.hddtype == 'hdd') {
+                else if (checkbox.hdd == true && (item.hdd_type).toLowerCase() == 'hdd') {
                     filtered.push(item);
                 }
-                else if (checkbox.hybrid == true && item.hddtype == 'hybrid') {
+                else if (checkbox.hybrid == true && (item.hdd_type).toLowerCase() == 'hybrid') {
                     filtered.push(item);
                 }
             });

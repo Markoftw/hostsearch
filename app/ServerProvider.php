@@ -8,7 +8,7 @@ class ServerProvider extends Model
 {
     protected $table = 'server_providers';
 
-    protected $fillable = ['provider', 'website', 'open_year', 'slogan', 'description', 'operating_country', 'ceo'];
+    protected $fillable = ['provider_name', 'website', 'open_year', 'slogan', 'description', 'operating_country', 'ceo'];
 
     protected $hidden = [];
 

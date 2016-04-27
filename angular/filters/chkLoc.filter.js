@@ -9,16 +9,16 @@ export function ChkLocFilter(){
                 if (checkbox.europe == false && checkbox.america == false && checkbox.asia == false && checkbox.other == false) {
                     filtered.push(item);
                 }
-                else if (checkbox.europe == true && item.location == 'europe') {
+                else if (checkbox.europe == true && (item.location).toLowerCase() == 'europe') {
                     filtered.push(item);
                 }
-                else if (checkbox.america == true && item.location == 'america') {
+                else if (checkbox.america == true && (item.location).toLowerCase() == 'america') {
                     filtered.push(item);
                 }
-                else if (checkbox.asia == true && item.location == 'asia') {
+                else if (checkbox.asia == true && (item.location).toLowerCase() == 'asia') {
                     filtered.push(item);
                 }
-                else if (checkbox.other == true && item.location == 'other') {
+                else if (checkbox.other == true && (item.location).toLowerCase() == 'other') {
                     filtered.push(item);
                 }
             });

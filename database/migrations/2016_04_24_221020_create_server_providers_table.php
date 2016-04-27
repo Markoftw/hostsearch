@@ -14,8 +14,8 @@ class CreateServerProvidersTable extends Migration
     {
         Schema::create('server_providers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('provider')->unique();
-            $table->string('website')->unique();
+            $table->string('provider_name');
+            $table->string('website');
             $table->string('open_year')->nullable();
             $table->string('slogan')->nullable();
             $table->string('description')->nullable();

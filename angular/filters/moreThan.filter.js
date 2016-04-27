@@ -7,7 +7,7 @@ export function MoreThanFilter() {
         var output = [];
         if(val) {
             angular.forEach(input, function (item) {
-                if (item.price <= val.priceSlider && item.ram >= val.ramSlider && item.hdd >= val.hddSlider && item.cpu >= val.cpuSlider && item.bw >= val.bwSlider) {
+                if (item.server_price <= val.priceSlider && item.ram_size >= val.ramSlider && item.hdd_size >= val.hddSlider && item.cpu_power >= val.cpuSlider && item.bandwidth_tb >= val.bwSlider) {
                     output.push(item)
                 }
             });

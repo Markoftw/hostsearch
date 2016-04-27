@@ -33,6 +33,9 @@ $api->group(['middleware' => ['api']], function ($api) {
 
     $api->get('sample/test', 'AngularController@protectedData');
 
+    $api->get('show/dedicated', 'DedicatedController@showAll');
+    $api->get('show/vps', 'VPSController@showAll');
+
 });
 
 //protected API routes with JWT (must be logged in)
