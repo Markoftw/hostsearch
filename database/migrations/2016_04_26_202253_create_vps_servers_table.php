@@ -27,7 +27,7 @@ class CreateVpsServersTable extends Migration
             $table->integer('hdd_size')->unsigned();
             $table->integer('cpu_version')->unsigned();
             $table->integer('cpu_cores')->unsigned();
-            $table->integer('cpu_power')->unsigned();
+            $table->float('cpu_power')->unsigned();
             $table->integer('bandwidth_tb')->unsigned();
             $table->integer('num_ips')->unsigned();
             $table->string('platform_os');

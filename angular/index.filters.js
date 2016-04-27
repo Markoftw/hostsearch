@@ -1,3 +1,4 @@
+import {StartFromFilter} from './filters/startFrom.filter';
 import {CapitalizeFilter} from './filters/capitalize.filter';
 import {HumanReadableFilter} from './filters/human_readable.filter';
 import {TruncatCharactersFilter} from './filters/truncate_characters.filter';
@@ -11,6 +12,7 @@ import {UcFirstFilter} from './filters/ucfirst.filter';
 import {MoreThanFilter} from './filters/moreThan.filter';
 
 angular.module('app.filters')
+	.filter('startFrom', StartFromFilter)
 	.filter('capitalize', CapitalizeFilter)
 	.filter('humanReadable', HumanReadableFilter)
 	.filter('truncateCharacters', TruncatCharactersFilter)
