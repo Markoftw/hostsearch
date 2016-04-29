@@ -1,0 +1,29 @@
+<div flex-xs="100" flex-sm="100" flex-gt-sm="70" flex-offset-gt-sm="15" layout="row" ng-if="!vm.loaded">
+    <span flex></span>
+    <md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+    <span flex></span>
+</div>
+<md-content class="md-padding" flex="70" flex-offset="15">
+    <md-card ng-if="vm.loaded" md-whiteframe="6">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Provider: {{ vm.server_info.provider.provider_name }}</span>
+                <md-divider></md-divider>
+                <span class="md-subhead">Location: {{ vm.server_info.location }}</span>
+                <span class="md-subhead">Price: {{ vm.server_info.server_price | currency }}</span>
+                <span class="md-subhead">Setup fee: {{ vm.server_info.setup_price | currency }}</span>
+                <span class="md-subhead">RAM: {{ vm.server_info.ram_size }}GB, type: {{ server.ram_type }}</span>
+                <span class="md-subhead">CPU: {{ vm.server_info.cpu_power }}GHz</span>
+                <span class="md-subhead">HDD: {{ vm.server_info.hdd_size }}GB, type: {{ server.hdd_type }}</span>
+                <span class="md-subhead">OS: {{ vm.server_info.platform_os }}</span>
+                <span class="md-subhead">Bandwidth: {{ vm.server_info.bandwidth_tb }}TB</span>
+            </md-card-title-text>
+            <md-card-title-media>
+                <div class="md-media-lg card-media"></div>
+            </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button>Order</md-button>
+        </md-card-actions>
+    </md-card>
+</md-content>

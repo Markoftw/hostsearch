@@ -1,3 +1,4 @@
+import {DetailsDedicatedComponent} from './app/components/details_dedicated/details_dedicated.component';
 import {ContactFormComponent} from './app/components/contact_form/contact_form.component';
 import {ResetPasswordComponent} from './app/components/reset-password/reset-password.component';
 import {ForgotPasswordComponent} from './app/components/forgot-password/forgot-password.component';
@@ -11,6 +12,7 @@ import {LoginDialogController} from './dialogs/login/login.dialog';
 import {RegisterDialogController} from './dialogs/register/register.dialog';
 
 angular.module('app.components')
+	.component('detailsDedicated', DetailsDedicatedComponent)
 	.component('contactForm', ContactFormComponent)
 	.component('resetPassword', ResetPasswordComponent)
 	.component('forgotPassword', ForgotPasswordComponent)

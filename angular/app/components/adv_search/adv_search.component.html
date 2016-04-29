@@ -133,7 +133,7 @@
         </md-card>
     </div> <!-- filter: { price: '45' } -->
     <div flex-xs flex-sm flex-gt-sm="75" layout="column">
-        <md-progress-circular ng-if="!vm.loaded" class="md-primary" md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+        <md-progress-circular ng-if="!vm.loaded" class="md-primary" md-mode="indeterminate" md-diameter="100" flex-offset-gt-sm="50"></md-progress-circular>
         <md-card ng-if="vm.loaded" md-whiteframe="6"
                  ng-repeat="server in filtered=(vm.servers | moreThan:vm.sliders | chkLoc:vm.locations | chkRam:vm.ram |
                   chkPlatform:vm.platform | chkHdd:vm.hdd) | orderBy:'+server_price' | startFrom:vm.currPage*vm.pageLimit | limitTo: vm.pageLimit">
@@ -156,7 +156,7 @@
             </md-card-title>
             <md-card-actions layout="row" layout-align="end center">
                 <md-button>Order</md-button>
-                <md-button>View</md-button>
+                <md-button ng-click="vm.viewServer(server.id)">View</md-button>
             </md-card-actions>
         </md-card>
         <md-card ng-if="vm.loaded && filtered.length == 0" md-whiteframe="6"">

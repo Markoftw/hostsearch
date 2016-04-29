@@ -42,6 +42,15 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('app.viewdedicated', {
+            url: '/dedicated/:id',
+            data: {},
+            views: {
+                'main@': {
+                    templateUrl: getView('show_dedicated')
+                }
+            }
+        })
         .state('app.about', {
             url: '/about',
             data: {},

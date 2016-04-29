@@ -1,5 +1,5 @@
 class AdvSearchController{
-    constructor($scope, API, LoggingService, ToastService, $window){
+    constructor($scope, API, LoggingService, ToastService, $window, $state){
         'ngInject';
 
         this.$scope = $scope;
@@ -7,6 +7,7 @@ class AdvSearchController{
         this.LoggingService = LoggingService;
         this.ToastService = ToastService;
         this.$window = $window;
+        this.$state = $state;
 
         this.servers = '';
         this.loaded = false;
@@ -20,7 +21,7 @@ class AdvSearchController{
     }
 
     $onInit () {
-        this.API.one('show/dedicated').get()
+        this.API.one('dedicated/all').get()
             .then((response) => {
                 this.servers = response.data.data;
                 this.loaded = true;
@@ -43,6 +44,10 @@ class AdvSearchController{
             this.currPage = 0;
         }
         return pages;
+    }
+
+    viewServer(id) {
+        this.$state.go("app.viewdedicated", { "id": id });
     }
 }
 

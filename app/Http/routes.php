@@ -34,8 +34,10 @@ $api->group(['middleware' => ['api']], function ($api) {
     $api->get('sample/test', 'AngularController@protectedData');
 
     // Advanced Search Routes...
-    $api->get('show/dedicated', 'DedicatedController@showAll');
-    $api->get('show/vps', 'VPSController@showAll');
+    $api->get('dedicated/all', 'DedicatedController@showAll');
+    $api->get('dedicated/show', 'DedicatedController@showOne');
+    $api->get('vps/all', 'VPSController@showAll');
+    $api->get('vps/show', 'VPSController@showOne');
 
     // About Page Routes...
     $api->post('about/new', 'ContactController@store');
