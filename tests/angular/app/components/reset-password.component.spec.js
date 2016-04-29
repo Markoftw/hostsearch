@@ -24,7 +24,7 @@ ngDescribe({
         it('should submit password reset successfully', () => {
             var component = deps.element.isolateScope().vm;
 
-            component.submit()
+            component.submit();
 
             deps.http.flush();
         });

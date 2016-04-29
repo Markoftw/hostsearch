@@ -1,26 +1,29 @@
 <form name="contactForm" ng-submit="vm.submit();">
     <md-card-title>
         <md-card-title-text layout-padding>
-            <span class="md-headline">Send us a message</span>
+            <span class="md-headline">Leave a message</span>
             <md-divider></md-divider>
             <div>
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
+                        <md-icon md-svg-icon="img/icons/ic_person_black_24px.svg"></md-icon>
                         <label>First name:</label>
-                        <input ng-model="vm.firstName" required>
+                        <input ng-model="vm.firstName" type="text" required>
                     </md-input-container>
 
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Last name (optional):</label>
-                        <input ng-model="vm.lastName">
+                        <input ng-model="vm.lastName" type="text">
                     </md-input-container>
                 </div>
                 <md-input-container md-no-float class="md-block" flex-gt-sm>
+                    <md-icon md-svg-icon="img/icons/ic_email_black_24px.svg"></md-icon>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" ng-model="vm.email" required/>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
-                    <label>Message</label>
+                    <md-icon md-svg-icon="img/icons/ic_message_black_24px.svg"></md-icon>
+                    <label>Message:</label>
                     <textarea ng-model="vm.message" md-maxlength="250" rows="5" md-select-on-focus required></textarea>
                 </md-input-container>
             </div>
