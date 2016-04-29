@@ -80,3 +80,12 @@ $factory->define(App\VPSServer::class, function (Faker\Generator $faker) {
         'other_info' => $faker->paragraph
     ];
 });
+
+$factory->define(App\Contact::class, function (Faker\Generator $faker) {
+    return [
+        'first_name'  => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'email' => $faker->email,
+        'message' => $faker->paragraph
+    ];
+});

@@ -159,10 +159,17 @@
                 <md-button>View</md-button>
             </md-card-actions>
         </md-card>
+        <md-card ng-if="vm.loaded && filtered.length == 0" md-whiteframe="6"">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">No servers are matching the filters!</span>
+                </md-card-title-text>
+            </md-card-title>
+        </md-card>
         <!--<div ng-if="vm.loaded">
             pageLimit {{ vm.pageLimit }}, totalPages: {{ vm.totalPages }}, currPage: {{ vm.currPage }}
         </div>-->
-        <div ng-if="vm.loaded" flex-xs flex-sm layout="row">
+        <div ng-if="vm.loaded && vm.totalPages(filtered.length) > 1" flex-xs flex-sm layout="row">
             <span flex></span>
             <md-button class="md-primary" ng-disabled="vm.currPage == 0" ng-click="vm.currPage = 0"><i class="fa fa-angle-double-left" aria-hidden="true" aria-label="doubleleft_icon"></i></md-button>
             <md-button class="md-primary" ng-disabled="vm.currPage == 0" ng-click="vm.currPage = vm.currPage-1">

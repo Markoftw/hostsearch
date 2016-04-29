@@ -42,12 +42,12 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('app.contact', {
-            url: '/contact',
+        .state('app.about', {
+            url: '/about',
             data: {},
             views: {
                 'main@': {
-                    templateUrl: getView('contact')
+                    templateUrl: getView('about')
                 }
             }
         })

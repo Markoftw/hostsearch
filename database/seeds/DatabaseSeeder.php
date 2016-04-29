@@ -16,5 +16,7 @@ class DatabaseSeeder extends Seeder
             $u->dedicated()->save(factory(App\DedicatedServer::class)->make());
             $u->vps()->save(factory(App\VPSServer::class)->make());
         });
+        
+        factory(App\Contact::class, 10)->create();
     }
 }
