@@ -24,7 +24,7 @@ class ContactFormController{
         };
 
         this.API.all('about/new').post(data)
-            .then((response) => {
+            .then(() => {
                 this.ToastService.show("Your message has been sent!");
                 this.firstName = '';
                 this.lastName = '';

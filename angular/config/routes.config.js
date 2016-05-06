@@ -21,6 +21,9 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
                 footer: {
                     templateUrl: getView('footer')
                 },
+                scrolling: {
+                    templateUrl: getView('scroll')
+                },
                 main: {}
             }
         })

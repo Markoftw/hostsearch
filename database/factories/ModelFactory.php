@@ -56,6 +56,7 @@ $factory->define(App\DedicatedServer::class, function (Faker\Generator $faker) {
         'bandwidth_tb' => $faker->numberBetween(1, 100),
         'num_ips' => $faker->numberBetween(1, 16),
         'platform_os' => $faker->randomElement(['Linux', 'Windows', 'Macintosh']),
+        'rating' => $faker->randomFloat(null, 1, 5),
         'other_info' => $faker->paragraph
     ];
 });
@@ -77,6 +78,7 @@ $factory->define(App\VPSServer::class, function (Faker\Generator $faker) {
         'bandwidth_tb' => $faker->numberBetween(1, 100),
         'num_ips' => $faker->numberBetween(1, 16),
         'platform_os' => $faker->randomElement(['Linux', 'Windows', 'Macintosh']),
+        'rating' => $faker->randomFloat(null, 1, 5),
         'other_info' => $faker->paragraph
     ];
 });

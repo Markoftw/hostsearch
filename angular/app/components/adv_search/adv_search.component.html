@@ -169,17 +169,17 @@
         <!--<div ng-if="vm.loaded">
             pageLimit {{ vm.pageLimit }}, totalPages: {{ vm.totalPages }}, currPage: {{ vm.currPage }}
         </div>-->
-        <div ng-if="vm.loaded && vm.totalPages(filtered.length) > 1" flex-xs flex-sm layout="row">
+        <div ng-if="vm.loaded && vm.totalPages(filtered.length) > 1" flex-xs flex-sm layout="row" layout-align="center center">
             <span flex></span>
-            <md-button class="md-primary" ng-disabled="vm.currPage == 0" ng-click="vm.currPage = 0"><i class="fa fa-angle-double-left" aria-hidden="true" aria-label="doubleleft_icon"></i></md-button>
-            <md-button class="md-primary" ng-disabled="vm.currPage == 0" ng-click="vm.currPage = vm.currPage-1">
+            <md-button class="md-raised" ng-disabled="vm.currPage == 0" ng-click="vm.currPage = 0"><i class="fa fa-angle-double-left" aria-hidden="true" aria-label="doubleleft_icon"></i></md-button>
+            <md-button class="md-raised" ng-disabled="vm.currPage == 0" ng-click="vm.currPage = vm.currPage-1">
                 <i class="fa fa-angle-left" aria-hidden="true" aria-label="left_icon"></i>
             </md-button>
-            <md-button ng-disabled="true">{{ vm.currPage+1 }}/{{ vm.totalPages(filtered.length) }}</md-button>
-            <md-button class="md-primary" ng-disabled="(vm.currPage >= filtered.length/vm.pageLimit - 1)" ng-click="vm.addPage()">
+            <span class="md-headline">{{ vm.currPage+1 }}/{{ vm.totalPages(filtered.length) }}</span>
+            <md-button class="md-raised" ng-disabled="(vm.currPage >= filtered.length/vm.pageLimit - 1)" ng-click="vm.addPage()">
                 <i class="fa fa-angle-right" aria-hidden="true" aria-label="right_icon"></i>
             </md-button>
-            <md-button class="md-primary" ng-disabled="(vm.currPage >= filtered.length/vm.pageLimit - 1)" ng-click="vm.currPage = vm.totalPages(filtered.length) - 1"><i class="fa fa-angle-double-right" aria-hidden="true" aria-label="doubleright_icon"></i></md-button>
+            <md-button class="md-raised" ng-disabled="(vm.currPage >= filtered.length/vm.pageLimit - 1)" ng-click="vm.currPage = vm.totalPages(filtered.length) - 1"><i class="fa fa-angle-double-right" aria-hidden="true" aria-label="doubleright_icon"></i></md-button>
             <span flex></span>
         </div>
     </div>

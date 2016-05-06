@@ -14,24 +14,36 @@
     <script type="text/javascript">document.location.href = '/unsupported-browser'</script>
     <![endif]-->
 </head>
-<body>
+<body layout="row">
 
-    <div layout="column" layout-fill>
-        <div ui-view="header"></div>
+<div layout="column" layout-fill>
+    <header ui-view="header"></header>
+    <md-content layout="column" flex id="top-page">
         <div ui-view="main"></div>
         <span flex></span>
-        <div ui-view="footer"></div>
-    </div>
+        <footer ui-view="footer"></footer>
+    </md-content>
+</div>
+<div ui-view="scrolling"></div>
 
-    <script src="{!! elixir('js/vendor.js') !!}"></script>
-    <script src="{!! elixir('js/partials.js') !!}"></script>
-    <script src="{!! elixir('js/app.js') !!}"></script>
 
-    {{--livereload--}}
-    @if ( env('APP_ENV') === 'local' )
+<!--<div layout="column" role="main" flex>
+    <md-toolbar ui-view="header"></md-toolbar>
+    <md-content ui-view="main"></md-content>
+    <span flex></span>
+    <div ui-view="footer"></div>
+</div>-->
+
+
+<script src="{!! elixir('js/vendor.js') !!}"></script>
+<script src="{!! elixir('js/partials.js') !!}"></script>
+<script src="{!! elixir('js/app.js') !!}"></script>
+
+{{--livereload--}}
+@if ( env('APP_ENV') === 'local' )
     <script type="text/javascript">
-        document.write('<script src="'+ location.protocol + '//' + (location.host.split(':')[0] || 'localhost') +':35729/livereload.js?snipver=1" type="text/javascript"><\/script>')
+        document.write('<script src="' + location.protocol + '//' + (location.host.split(':')[0] || 'localhost') + ':35729/livereload.js?snipver=1" type="text/javascript"><\/script>')
     </script>
-    @endif
+@endif
 </body>
 </html>

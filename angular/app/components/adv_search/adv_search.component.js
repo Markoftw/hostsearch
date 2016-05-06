@@ -1,5 +1,5 @@
-class AdvSearchController{
-    constructor($scope, API, LoggingService, ToastService, $window, $state){
+class AdvSearchController {
+    constructor($scope, API, LoggingService, ToastService, $window, $state, $anchorScroll, $location, $document) {
         'ngInject';
 
         this.$scope = $scope;
@@ -8,6 +8,9 @@ class AdvSearchController{
         this.ToastService = ToastService;
         this.$window = $window;
         this.$state = $state;
+        this.$anchorScroll = $anchorScroll;
+        this.$location = $location;
+        this.$document = $document;
 
         this.servers = '';
         this.loaded = false;
@@ -20,7 +23,7 @@ class AdvSearchController{
 
     }
 
-    $onInit () {
+    $onInit() {
         this.API.one('dedicated/all').get()
             .then((response) => {
                 this.servers = response.data.data;
@@ -33,22 +36,23 @@ class AdvSearchController{
             });
     }
 
-    addPage () {
+    addPage() {
         this.currPage = this.currPage + 1;
         //this.$window.scrollTo(0,0);
     }
 
     totalPages(items) {
-        let pages = Math.ceil(items/this.pageLimit);
-        if(this.currPage >= pages) {
+        let pages = Math.ceil(items / this.pageLimit);
+        if (this.currPage >= pages) {
             this.currPage = 0;
         }
         return pages;
     }
 
     viewServer(id) {
-        this.$state.go("app.viewdedicated", { "id": id });
+        this.$state.go("app.viewdedicated", {"id": id});
     }
+    
 }
 
 export const AdvSearchComponent = {

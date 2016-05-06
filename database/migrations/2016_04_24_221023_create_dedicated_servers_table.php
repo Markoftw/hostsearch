@@ -31,6 +31,7 @@ class CreateDedicatedServersTable extends Migration
             $table->integer('bandwidth_tb')->unsigned();
             $table->integer('num_ips')->unsigned();
             $table->string('platform_os');
+            $table->float('rating')->unsigned();
             $table->text('other_info');
             $table->timestamps();
         });

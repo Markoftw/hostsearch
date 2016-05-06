@@ -1,3 +1,4 @@
+import {ScrollFabComponent} from './app/components/scroll_fab/scroll_fab.component';
 import {DetailsDedicatedComponent} from './app/components/details_dedicated/details_dedicated.component';
 import {ContactFormComponent} from './app/components/contact_form/contact_form.component';
 import {ResetPasswordComponent} from './app/components/reset-password/reset-password.component';
@@ -12,6 +13,7 @@ import {LoginDialogController} from './dialogs/login/login.dialog';
 import {RegisterDialogController} from './dialogs/register/register.dialog';
 
 angular.module('app.components')
+	.component('scrollFab', ScrollFabComponent)
 	.component('detailsDedicated', DetailsDedicatedComponent)
 	.component('contactForm', ContactFormComponent)
 	.component('resetPassword', ResetPasswordComponent)
