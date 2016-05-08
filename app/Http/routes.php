@@ -42,6 +42,9 @@ $api->group(['middleware' => ['api']], function ($api) {
     // About Page Routes...
     $api->post('about/new', 'ContactController@store');
 
+    // git information
+    $api->get('git/status', 'AngularController@gitStatus');
+
 });
 
 //protected API routes with JWT (must be logged in)

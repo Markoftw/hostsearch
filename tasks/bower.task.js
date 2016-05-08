@@ -61,7 +61,7 @@ Elixir.extend('bower', function(jsOutputFile, jsOutputFolder, cssOutputFile, css
 				title: 'Laravel Elixir',
 				subtitle: 'CSS Bower Files Imported!',
 				icon: __dirname + '/../node_modules/laravel-elixir/icons/laravel.png',
-				message: ' '
+				message: 'CSS Bower Files Imported!'
 			}));
 	}).watch('bower.json');
 
