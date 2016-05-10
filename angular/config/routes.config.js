@@ -5,6 +5,14 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         return `./views/app/pages/${viewName}/${viewName}.page.html`;
     };
 
+    let getAdminView = (viewName) => {
+        return `./views/app/pages/admincp/partials/${viewName}.html`;
+    };
+
+    let getProfileView = (viewName) => {
+        return `./views/app/pages/profile/partials/${viewName}.html`;
+    };
+
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
@@ -71,6 +79,141 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
             views: {
                 'main@': {
                     templateUrl: getView('admincp')
+                },
+                'adminview@app.admin': {
+                    templateUrl: getAdminView('project')
+                }
+            }
+        })
+        .state('app.admin.project', {
+            url: '/project',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('project')
+                }
+            }
+        })
+        .state('app.admin.system', {
+            url: '/system',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('system')
+                }
+            }
+        })
+        .state('app.admin.analytics', {
+            url: '/analytics',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('analytics')
+                }
+            }
+        })
+        .state('app.admin.dedicated', {
+            url: '/dedicated',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('dedicated')
+                }
+            }
+        })
+        .state('app.admin.virtual', {
+            url: '/virtual',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('virtual')
+                }
+            }
+        })
+        .state('app.admin.cloud', {
+            url: '/cloud',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('cloud')
+                }
+            }
+        })
+        .state('app.admin.users', {
+            url: '/users',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('users')
+                }
+            }
+        })
+        .state('app.admin.invoices', {
+            url: '/invoices',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('invoices')
+                }
+            }
+        })
+        .state('app.admin.calendar', {
+            url: '/calendar',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('calendar')
+                }
+            }
+        })
+        .state('app.admin.messages', {
+            url: '/messages',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('messages')
+                }
+            }
+        })
+        .state('app.admin.errorlog', {
+            url: '/errorlog',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('errorlog')
+                }
+            }
+        })
+        .state('app.admin.settings', {
+            url: '/settings',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('settings')
                 }
             }
         })
@@ -85,6 +228,97 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
             views: {
                 'main@': {
                     templateUrl: getView('profile')
+                },
+                'profileview@app.profile': {
+                    templateUrl: getProfileView('profile')
+                }
+            }
+        })
+        .state('app.profile.profile', {
+            url: '/dashboard',
+            data: {
+                auth: true
+            },
+            views: {
+                profileview: {
+                    templateUrl: getProfileView('profile')
+                }
+            }
+        })
+        .state('app.profile.dedicated', {
+            url: '/dedicated',
+            data: {
+                auth: true
+            },
+            views: {
+                profileview: {
+                    templateUrl: getProfileView('dedicated')
+                }
+            }
+        })
+        .state('app.profile.virtual', {
+            url: '/virtual',
+            data: {
+                auth: true
+            },
+            views: {
+                profileview: {
+                    templateUrl: getProfileView('virtual')
+                }
+            }
+        })
+        .state('app.profile.cloud', {
+            url: '/cloud',
+            data: {
+                auth: true
+            },
+            views: {
+                profileview: {
+                    templateUrl: getProfileView('cloud')
+                }
+            }
+        })
+        .state('app.profile.purchases', {
+            url: '/purchases',
+            data: {
+                auth: true
+            },
+            views: {
+                profileview: {
+                    templateUrl: getProfileView('purchases')
+                }
+            }
+        })
+        .state('app.profile.calendar', {
+            url: '/calendar',
+            data: {
+                auth: true
+            },
+            views: {
+                profileview: {
+                    templateUrl: getProfileView('calendar')
+                }
+            }
+        })
+        .state('app.profile.messages', {
+            url: '/messages',
+            data: {
+                auth: true
+            },
+            views: {
+                profileview: {
+                    templateUrl: getProfileView('messages')
+                }
+            }
+        })
+        .state('app.profile.settings', {
+            url: '/settings',
+            data: {
+                auth: true
+            },
+            views: {
+                profileview: {
+                    templateUrl: getProfileView('settings')
                 }
             }
         })

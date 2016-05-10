@@ -1,4 +1,4 @@
-export function RoutesRun($rootScope, $state, $auth) {
+export function RoutesRun($rootScope, $state, $window, $auth) {
     'ngInject';
 
     let deregisterationCallback = $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams, options) {
@@ -22,4 +22,10 @@ export function RoutesRun($rootScope, $state, $auth) {
 
     });
     $rootScope.$on('$destroy', deregisterationCallback)
+
+    /*$rootScope.$on('$stateChangeSuccess',function(){
+        if($window.document.getElementById('top-page').scrollTop > 0) {
+            $window.document.getElementById('top-page').scrollTop = 0;
+        }
+    })*/
 }

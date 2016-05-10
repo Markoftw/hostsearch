@@ -1,3 +1,90 @@
-<md-content class="Page-container">
-    <h3>Profile page</h3>
-</md-content>
+<div layout="row">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="admin_left" md-is-locked-open="$mdMedia('gt-md')" flex="15" layout="column">
+        <md-content>
+            <md-toolbar class="md-accent">
+                <h1 class="md-toolbar-tools">User account</h1>
+            </md-toolbar>
+            <md-content layout-padding>
+                <p hide-md>
+                    This sidenav is locked open on your device. To go back to the default behavior,
+                    narrow your display.
+                </p>
+            </md-content>
+            <md-toolbar class="md-accent">
+                <md-button ng-disabled="true" class="md-toolbar-tools">
+                    Dashboards
+                </md-button>
+            </md-toolbar>
+            <md-menu-item>
+                <md-button ui-sref="app.profile.profile" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_person_black_24px.svg"></md-icon>
+                    Profile
+                </md-button>
+            </md-menu-item>
+            <md-toolbar class="md-accent">
+                <md-button ng-disabled="true" class="md-toolbar-tools">
+                    Favorites
+                </md-button>
+            </md-toolbar>
+            <md-menu-item>
+                <md-button ui-sref="app.profile.dedicated" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_storage_black_24px.svg"></md-icon>
+                    Dedicated servers
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ui-sref="app.profile.virtual" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_storage_black_24px.svg"></md-icon>
+                    Virtual private servers
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ui-sref="app.profile.cloud" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_cloud_black_24px.svg"></md-icon>
+                    Cloud servers
+                </md-button>
+            </md-menu-item>
+            <md-toolbar class="md-accent">
+                <md-button ng-disabled="true" class="md-toolbar-tools">
+                    Payments
+                </md-button>
+            </md-toolbar>
+            <md-menu-item>
+                <md-button ui-sref="app.profile.purchases" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_receipt_black_24px.svg"></md-icon>
+                    Purchases
+                </md-button>
+            </md-menu-item>
+            <md-toolbar class="md-accent">
+                <md-button ng-disabled="true" class="md-toolbar-tools">
+                    Other
+                </md-button>
+            </md-toolbar>
+            <md-menu-item>
+                <md-button ui-sref="app.profile.calendar" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_date_range_black_24px.svg"></md-icon>
+                    Calendar
+                </md-button>
+            </md-menu-item>
+            <md-divider></md-divider>
+            <md-menu-item>
+                <md-button ui-sref="app.profile.messages" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_message_black_24px.svg"></md-icon>
+                    Messages
+                </md-button>
+            </md-menu-item>
+            <md-divider></md-divider>
+            <md-menu-item>
+                <md-button ui-sref="app.profile.settings" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_settings_black_24px.svg"></md-icon>
+                    Settings
+                </md-button>
+            </md-menu-item>
+            <md-divider></md-divider>
+        </md-content>
+    </md-sidenav>
+
+    <md-content layout-padding class="md-padding" flex="85">
+        <div ui-view="profileview"></div>
+    </md-content>
+</div>

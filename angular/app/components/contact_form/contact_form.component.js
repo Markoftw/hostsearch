@@ -1,14 +1,21 @@
 class ContactFormController{
-    constructor(API, LoggingService, ToastService, $scope){
+    constructor(API, LoggingService, ToastService, $scope, $auth, UserService){
         'ngInject';
 
         this.API = API;
         this.LoggingService = LoggingService;
         this.ToastService = ToastService;
         this.$scope = $scope;
+        this.$auth = $auth;
+        this.UserService = UserService;
     }
 
     $onInit() {
+        /*if(this.$auth.isAuthenticated()) {
+            this.firstName = this.UserService.getUsername();
+        } else {
+            this.firstName = '';
+        }*/
         this.firstName = '';
         this.lastName = '';
         this.email = '';

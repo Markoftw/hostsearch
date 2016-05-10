@@ -1,6 +1,6 @@
 ngDescribe({
     name: 'Test routes configuration',
-    inject:['$location','$state'],
+    inject:['$location','$state','$window'],
     modules: 'app',
     tests: function (deps) {
         function goTo(url) {

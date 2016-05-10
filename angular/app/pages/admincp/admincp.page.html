@@ -1,3 +1,120 @@
-<md-content class="Page-container">
-    <h3>AdminCP</h3>
-</md-content>
+<div layout="row">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="admin_left" md-is-locked-open="$mdMedia('gt-md')" flex="15" layout="column">
+        <md-content>
+            <md-toolbar class="md-accent" ui-sref="app.admin">
+                <h1 class="md-toolbar-tools">Admin tools</h1>
+            </md-toolbar>
+            <md-content layout-padding ui-sref="app.admin">
+                <p hide-md>
+                    This sidenav is locked open on your device. To go back to the default behavior,
+                    narrow your display.
+                </p>
+            </md-content>
+            <md-toolbar class="md-accent">
+                <md-button ng-disabled="true" class="md-toolbar-tools">
+                    Dashboards
+                </md-button>
+            </md-toolbar>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.project" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_timeline_black_24px.svg"></md-icon>
+                    Project
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.system" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_computer_black_24px.svg"></md-icon>
+                    System
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.analytics" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_insert_chart_black_24px.svg"></md-icon>
+                    Analytics
+                </md-button>
+            </md-menu-item>
+            <md-toolbar class="md-accent">
+                <md-button ng-disabled="true" class="md-toolbar-tools">
+                    Servers
+                </md-button>
+            </md-toolbar>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.dedicated" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_storage_black_24px.svg"></md-icon>
+                    Dedicated servers
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.virtual" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_storage_black_24px.svg"></md-icon>
+                    Virtual private servers
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.cloud" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_cloud_black_24px.svg"></md-icon>
+                    Cloud servers
+                </md-button>
+            </md-menu-item>
+            <md-toolbar class="md-accent">
+                <md-button ng-disabled="true" class="md-toolbar-tools">
+                    Users
+                </md-button>
+            </md-toolbar>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.users" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_people_black_24px.svg"></md-icon>
+                    User management
+                </md-button>
+            </md-menu-item>
+            <md-toolbar class="md-accent">
+                <md-button ng-disabled="true" class="md-toolbar-tools">
+                    Payments
+                </md-button>
+            </md-toolbar>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.invoices" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_receipt_black_24px.svg"></md-icon>
+                    Invoices
+                </md-button>
+            </md-menu-item>
+            <md-toolbar class="md-accent">
+                <md-button ng-disabled="true" class="md-toolbar-tools">
+                    Other
+                </md-button>
+            </md-toolbar>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.calendar" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_date_range_black_24px.svg"></md-icon>
+                    Calendar
+                </md-button>
+            </md-menu-item>
+            <md-divider></md-divider>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.messages" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_message_black_24px.svg"></md-icon>
+                    Messages
+                </md-button>
+            </md-menu-item>
+            <md-divider></md-divider>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.errorlog" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_error_black_24px.svg"></md-icon>
+                    Error log
+                </md-button>
+            </md-menu-item>
+            <md-divider></md-divider>
+            <md-menu-item>
+                <md-button ui-sref="app.admin.settings" ui-sref-active="md-raised md-primary">
+                    <md-icon md-svg-icon="img/icons/ic_settings_black_24px.svg"></md-icon>
+                    Settings
+                </md-button>
+            </md-menu-item>
+            <md-divider></md-divider>
+        </md-content>
+    </md-sidenav>
+
+    <md-content layout-padding class="md-padding" flex="85">
+        <div ui-view="adminview"></div>
+    </md-content>
+</div>

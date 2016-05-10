@@ -7,7 +7,8 @@ class GitVersionController {
 
     $onInit() {
 
-        this.version = 'Version: 0.0.0 (0, 0000000, commit 0) — Last commit: Thu Jan 1 00:00:00 1970 +0200';
+        //this.version = 'Version: 0.0.0 (0, 0000000, commit 0) — Last commit: Thu Jan 1 00:00:00 1970 +0200';
+        this.version = '';
         this.getVersion();
     }
 
