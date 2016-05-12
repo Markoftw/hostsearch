@@ -91,3 +91,25 @@ $factory->define(App\Contact::class, function (Faker\Generator $faker) {
         'message' => $faker->paragraph
     ];
 });
+
+$factory->define(App\CloudServer::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'url' => $faker->domainName,
+        'location' => $faker->randomElement(['Europe', 'America', 'Asia', 'Other']),
+        'server_price' => $faker->numberBetween(1, 250),
+        'setup_price' => $faker->numberBetween(1,25),
+        'ram_type' => $faker->randomElement(['DDR3', 'DDR4', 'ECC']),
+        'ram_size' => $faker->numberBetween(1,48),
+        'hdd_type' => $faker->randomElement(['HDD', 'SSD', 'Hybrid']),
+        'hdd_size' => $faker->numberBetween(120,10000),
+        'cpu_version' => $faker->word,
+        'cpu_cores' => $faker->numberBetween(1, 32),
+        'cpu_power' => $faker->randomFloat(null, 1, 5),
+        'bandwidth_tb' => $faker->numberBetween(1, 100),
+        'num_ips' => $faker->numberBetween(1, 16),
+        'platform_os' => $faker->randomElement(['Linux', 'Windows', 'Macintosh']),
+        'rating' => $faker->randomFloat(null, 1, 5),
+        'other_info' => $faker->paragraph
+    ];
+});

@@ -1,10 +1,11 @@
 class RamUsageChartController{
-    constructor($scope, $interval, API) {
+    constructor($scope, $interval, API, $state) {
         'ngInject';
 
         this.$scope = $scope;
         this.$interval = $interval;
         this.API = API;
+        this.$state = $state;
     }
 
     $onInit() {
@@ -55,10 +56,13 @@ class RamUsageChartController{
 
         this.data = [{values: [], key: 'RAM usage'}];
         this.run = true;
-        var x = (new Date()).getTime();
+        //var x = 0;
         var self = this;
-        this.$interval(function () {
-            if (!self.run) return;
+        var interval = this.$interval(function () {
+            if (!self.run || self.$state.current.name != 'app.admin.system') {
+                self.$interval.cancel(interval);
+                return;
+            }
             self.data[0].values.push({
                 x: (new Date()).getTime(),
                 y: Math.random() - 0.5
@@ -66,9 +70,10 @@ class RamUsageChartController{
             if (self.data[0].values.length > 20) {
                 self.data[0].values.shift();
             }
-            x++;
+            //x++;
             //self.$scope.$apply(); // update chart
         }, 2500);
+
     }
 }
 
@@ -77,4 +82,4 @@ export const RamUsageChartComponent = {
     controller: RamUsageChartController,
     controllerAs: 'vm',
     bindings: {}
-}
+};

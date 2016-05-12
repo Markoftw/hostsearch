@@ -44,20 +44,22 @@ $api->group(['middleware' => ['api']], function ($api) {
 
     // git information
     $api->get('git/status', 'AngularController@gitStatus');
+
+    // home page data
+    $api->get('home/items', 'AngularController@homeData');
     
+});
+
+//protected API routes with JWT (must be logged in)
+$api->group(['middleware' => ['api', 'api.auth']], function ($api) {
+
     // server information
     $api->group(['prefix' => 'server'], function ($api){
         $api->get('cpu/load', 'ServerController@cpuLoad');
         $api->get('cpu/average', 'ServerController@cpuAverage');
         $api->get('ram/used', 'ServerController@ramUsed');
     });
-
-
-});
-
-//protected API routes with JWT (must be logged in)
-$api->group(['middleware' => ['api', 'api.auth']], function ($api) {
-
+    
     $api->get('sample/protected', 'AngularController@protectedData');
     //$api->get('profile/username', 'AngularController@protectedProfileUsername');
 

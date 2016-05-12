@@ -33,4 +33,13 @@ class ServerProvider extends Model
         return $this->hasMany(VPSServer::class); // 'App\VPSServer'
     }
 
+    /**
+     * Get all Cloud servers for a Provider
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cloud()
+    {
+        return $this->hasMany(CloudServer::class); // 'App\CloudServer'
+    }
+
 }
