@@ -1,3 +1,7 @@
+import {RamInformationComponent} from './app/components/ram_information/ram_information.component';
+import {RamUsageChartComponent} from './app/components/ram_usage_chart/ram_usage_chart.component';
+import {CpuInformationComponent} from './app/components/cpu_information/cpu_information.component';
+import {CpuUsageChartComponent} from './app/components/cpu_usage_chart/cpu_usage_chart.component';
 import {GitVersionComponent} from './app/components/git_version/git_version.component';
 import {ScrollFabComponent} from './app/components/scroll_fab/scroll_fab.component';
 import {DetailsDedicatedComponent} from './app/components/details_dedicated/details_dedicated.component';
@@ -14,6 +18,10 @@ import {LoginDialogController} from './dialogs/login/login.dialog';
 import {RegisterDialogController} from './dialogs/register/register.dialog';
 
 angular.module('app.components')
+	.component('ramInformation', RamInformationComponent)
+	.component('ramUsageChart', RamUsageChartComponent)
+	.component('cpuInformation', CpuInformationComponent)
+	.component('cpuUsageChart', CpuUsageChartComponent)
 	.component('gitVersion', GitVersionComponent)
 	.component('scrollFab', ScrollFabComponent)
 	.component('detailsDedicated', DetailsDedicatedComponent)

@@ -44,6 +44,14 @@ $api->group(['middleware' => ['api']], function ($api) {
 
     // git information
     $api->get('git/status', 'AngularController@gitStatus');
+    
+    // server information
+    $api->group(['prefix' => 'server'], function ($api){
+        $api->get('cpu/load', 'ServerController@cpuLoad');
+        $api->get('cpu/average', 'ServerController@cpuAverage');
+        $api->get('ram/used', 'ServerController@ramUsed');
+    });
+
 
 });
 
