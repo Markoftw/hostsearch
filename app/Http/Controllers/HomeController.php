@@ -7,6 +7,7 @@ use App\DedicatedServer;
 use App\VPSServer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use JWTAuth;
 
 class HomeController extends Controller
 {
@@ -37,6 +38,10 @@ class HomeController extends Controller
         return response()->success($output);
     }
 
+    /**
+     * Get the home page information data
+     * @return mixed
+     */
     public function homeData()
     {
         $popular = $this->sortServeryBy('views');
@@ -50,6 +55,10 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * Get latest tweets
+     * @return mixed
+     */
     public function tweets()
     {
         $tweets = 'tweets';
@@ -59,11 +68,20 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * Get the latest news article
+     * @return array
+     */
     private function getNews()
     {
         return ['title' => 'News title', 'body' => 'Phasellus enim orci, interdum id augue nec, bibendum maximus augue. Nulla eu diam eget neque aliquam fringilla sit amet id nunc. Sed auctor vitae massa ut malesuada. Aenean efficitur turpis id viverra bibendum. Donec ornare, felis at lacinia facilisis, neque sapien placerat lorem, id cursus ipsum lectus et eros. Maecenas ut lacinia sem. Sed faucibus dui in tortor interdum convallis. Donec tortor est, viverra gravida volutpat nec, cursus ac tortor. Phasellus rhoncus augue in lacus suscipit, quis semper odio tempus. Nullam mauris risus, efficitur ut sollicitudin eu, lobortis in nunc. Donec rhoncus ac urna sit amet feugiat. Vivamus sagittis arcu nisi, eu viverra nibh sagittis non. Proin vitae dolor ut massa mollis tristique. Suspendisse sagittis pretium hendrerit. Quisque quis justo bibendum, aliquam nulla in, facilisis nibh.'];
     }
 
+    /**
+     * Order servers by specific type
+     * @param $type
+     * @return array
+     */
     private function sortServeryBy($type)
     {
         $dedicated = DedicatedServer::orderBy($type, 'desc')->take(5)->get();

@@ -2,11 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\CloudServer;
-use App\DedicatedServer;
-use App\VPSServer;
-use JWTAuth;
-
 class AngularController extends Controller
 {
     public function serveApp()
