@@ -2,19 +2,17 @@
     <md-card md-whiteframe="6">
         <md-card-title flex="initial">
             <md-card-title-text layout-padding>
-                <span class="md-headline">Latest news</span>
+                <span class="md-headline" layout="row" layout-align="start center">
+                    Latest news:
+                    <md-progress-circular ng-if="vm.loading" class="md-primary" md-mode="indeterminate" md-diameter="35"></md-progress-circular>
+                    {{ vm.info.news.title }}
+                </span>
                 <md-divider></md-divider>
-                <div>
-                    Phasellus enim orci, interdum id augue nec, bibendum maximus augue. Nulla eu diam eget
-                    neque aliquam fringilla sit amet id nunc. Sed auctor vitae massa ut malesuada. Aenean
-                    efficitur turpis id viverra bibendum. Donec ornare, felis at lacinia facilisis, neque
-                    sapien placerat lorem, id cursus ipsum lectus et eros. Maecenas ut lacinia sem. Sed
-                    faucibus dui in tortor interdum convallis. Donec tortor est, viverra gravida volutpat
-                    nec, cursus ac tortor. Phasellus rhoncus augue in lacus suscipit, quis semper odio
-                    tempus. Nullam mauris risus, efficitur ut sollicitudin eu, lobortis in nunc. Donec
-                    rhoncus ac urna sit amet feugiat. Vivamus sagittis arcu nisi, eu viverra nibh sagittis
-                    non. Proin vitae dolor ut massa mollis tristique. Suspendisse sagittis pretium
-                    hendrerit. Quisque quis justo bibendum, aliquam nulla in, facilisis nibh.
+                <div layout="row" layout-align="center center" ng-if="vm.loading">
+                    <md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+                </div>
+                <div ng-if="!vm.loading">
+                    {{ vm.info.news.body }}
                 </div>
             </md-card-title-text>
         </md-card-title>
@@ -24,19 +22,21 @@
     <md-card md-whiteframe="6">
         <md-card-title flex="initial">
             <md-card-title-text layout-padding>
-                <span class="md-headline">Popular</span>
+                <span class="md-headline">Popular <md-icon md-svg-icon="img/icons/ic_info_outline_black_24px.svg"></md-icon></span>
                 <md-divider></md-divider>
-                <div>
-                    Phasellus enim orci, interdum id augue nec, bibendum maximus augue. Nulla eu diam eget
-                    neque aliquam fringilla sit amet id nunc. Sed auctor vitae massa ut malesuada. Aenean
-                    efficitur turpis id viverra bibendum. Donec ornare, felis at lacinia facilisis, neque
-                    sapien placerat lorem, id cursus ipsum lectus et eros. Maecenas ut lacinia sem. Sed
-                    faucibus dui in tortor interdum convallis. Donec tortor est, viverra gravida volutpat
-                    nec, cursus ac tortor. Phasellus rhoncus augue in lacus suscipit, quis semper odio
-                    tempus. Nullam mauris risus, efficitur ut sollicitudin eu, lobortis in nunc. Donec
-                    rhoncus ac urna sit amet feugiat. Vivamus sagittis arcu nisi, eu viverra nibh sagittis
-                    non. Proin vitae dolor ut massa mollis tristique. Suspendisse sagittis pretium
-                    hendrerit. Quisque quis justo bibendum, aliquam nulla in, facilisis nibh.
+                <div layout="row" layout-align="center center" ng-if="vm.loading">
+                    <md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+                </div>
+                <div ng-if="!vm.loading" ng-repeat="server in vm.info.popular">
+                    <md-menu-item>
+                        <md-button ui-sref="app.viewdedicated({ id: server.id })">
+                            <md-icon ng-if="server.server_type == 'dedicated'" md-svg-icon="img/icons/ic_storage_black_24px.svg" hide-xs></md-icon>
+                            <md-icon ng-if="server.server_type == 'vps'" md-svg-icon="img/icons/ic_list_black_24px.svg" hide-xs></md-icon>
+                            <md-icon ng-if="server.server_type == 'cloud'" md-svg-icon="img/icons/ic_cloud_black_24px.svg" hide-xs></md-icon>
+                            {{ server.cpu_version }} | {{ server.ram_size }}GB | {{ server.hdd_size }}GB {{ server.hdd_type }} | {{ server.bandwidth_tb }}TB | {{ server.server_price | currency }}
+                        </md-button>
+                    </md-menu-item>
+                    <md-divider></md-divider>
                 </div>
             </md-card-title-text>
         </md-card-title>
@@ -48,39 +48,19 @@
             <md-card-title-text layout-padding>
                 <span class="md-headline">Recently added</span>
                 <md-divider></md-divider>
-                <div>
-                    Phasellus enim orci, interdum id augue nec, bibendum maximus augue. Nulla eu diam eget
-                    neque aliquam fringilla sit amet id nunc. Sed auctor vitae massa ut malesuada. Aenean
-                    efficitur turpis id viverra bibendum. Donec ornare, felis at lacinia facilisis, neque
-                    sapien placerat lorem, id cursus ipsum lectus et eros. Maecenas ut lacinia sem. Sed
-                    faucibus dui in tortor interdum convallis. Donec tortor est, viverra gravida volutpat
-                    nec, cursus ac tortor. Phasellus rhoncus augue in lacus suscipit, quis semper odio
-                    tempus. Nullam mauris risus, efficitur ut sollicitudin eu, lobortis in nunc. Donec
-                    rhoncus ac urna sit amet feugiat. Vivamus sagittis arcu nisi, eu viverra nibh sagittis
-                    non. Proin vitae dolor ut massa mollis tristique. Suspendisse sagittis pretium
-                    hendrerit. Quisque quis justo bibendum, aliquam nulla in, facilisis nibh.
+                <div layout="row" layout-align="center center" ng-if="vm.loading">
+                    <md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="100"></md-progress-circular>
                 </div>
-            </md-card-title-text>
-        </md-card-title>
-    </md-card>
-</div>
-<div>
-    <md-card md-whiteframe="6">
-        <md-card-title flex="initial">
-            <md-card-title-text layout-padding>
-                <span class="md-headline">Lorem ipsum</span>
-                <md-divider></md-divider>
-                <div>
-                    Phasellus enim orci, interdum id augue nec, bibendum maximus augue. Nulla eu diam eget
-                    neque aliquam fringilla sit amet id nunc. Sed auctor vitae massa ut malesuada. Aenean
-                    efficitur turpis id viverra bibendum. Donec ornare, felis at lacinia facilisis, neque
-                    sapien placerat lorem, id cursus ipsum lectus et eros. Maecenas ut lacinia sem. Sed
-                    faucibus dui in tortor interdum convallis. Donec tortor est, viverra gravida volutpat
-                    nec, cursus ac tortor. Phasellus rhoncus augue in lacus suscipit, quis semper odio
-                    tempus. Nullam mauris risus, efficitur ut sollicitudin eu, lobortis in nunc. Donec
-                    rhoncus ac urna sit amet feugiat. Vivamus sagittis arcu nisi, eu viverra nibh sagittis
-                    non. Proin vitae dolor ut massa mollis tristique. Suspendisse sagittis pretium
-                    hendrerit. Quisque quis justo bibendum, aliquam nulla in, facilisis nibh.
+                <div ng-if="!vm.loading" ng-repeat="server in vm.info.recent">
+                    <md-menu-item>
+                        <md-button ui-sref="app.viewdedicated({ id: server.id })">
+                            <md-icon ng-if="server.server_type == 'dedicated'" md-svg-icon="img/icons/ic_storage_black_24px.svg" hide-xs></md-icon>
+                            <md-icon ng-if="server.server_type == 'vps'" md-svg-icon="img/icons/ic_list_black_24px.svg" hide-xs></md-icon>
+                            <md-icon ng-if="server.server_type == 'cloud'" md-svg-icon="img/icons/ic_cloud_black_24px.svg" hide-xs></md-icon>
+                            {{ server.cpu_version }} | {{ server.ram_size }}GB | {{ server.hdd_size }}GB {{ server.hdd_type }} | {{ server.bandwidth_tb }}TB | {{ server.server_price | currency }}
+                        </md-button>
+                    </md-menu-item>
+                    <md-divider></md-divider>
                 </div>
             </md-card-title-text>
         </md-card-title>

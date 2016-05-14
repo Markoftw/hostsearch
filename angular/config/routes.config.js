@@ -151,6 +151,17 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('app.admin.news', {
+            url: '/users',
+            data: {
+                auth: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('news')
+                }
+            }
+        })
         .state('app.admin.users', {
             url: '/users',
             data: {

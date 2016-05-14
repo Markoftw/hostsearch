@@ -1,5 +1,5 @@
 class AdvSearchController {
-    constructor($scope, API, LoggingService, ToastService, $window, $state, $anchorScroll, $location, $document) {
+    constructor($scope, API, LoggingService, ToastService, $window, $anchorScroll, $location, $document) {
         'ngInject';
 
         this.$scope = $scope;
@@ -7,7 +7,6 @@ class AdvSearchController {
         this.LoggingService = LoggingService;
         this.ToastService = ToastService;
         this.$window = $window;
-        this.$state = $state;
         this.$anchorScroll = $anchorScroll;
         this.$location = $location;
         this.$document = $document;
@@ -48,11 +47,7 @@ class AdvSearchController {
         }
         return pages;
     }
-
-    viewServer(id) {
-        this.$state.go("app.viewdedicated", {"id": id});
-    }
-    
+        
 }
 
 export const AdvSearchComponent = {

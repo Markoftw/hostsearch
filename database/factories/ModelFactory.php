@@ -41,11 +41,12 @@ $factory->define(App\ServerProvider::class, function (Faker\Generator $faker) {
 
 $factory->define(App\DedicatedServer::class, function (Faker\Generator $faker) {
     return [
+        'server_type' => 'dedicated',
         'name' => $faker->word,
         'url' => $faker->domainName,
         'location' => $faker->randomElement(['Europe', 'America', 'Asia', 'Other']),
-        'server_price' => $faker->numberBetween(1, 250),
-        'setup_price' => $faker->numberBetween(1,25),
+        'server_price' => $faker->randomFloat(null, 1, 250),
+        'setup_price' => $faker->randomFloat(null, 1, 25),
         'ram_type' => $faker->randomElement(['DDR3', 'DDR4', 'ECC']),
         'ram_size' => $faker->numberBetween(1,48),
         'hdd_type' => $faker->randomElement(['HDD', 'SSD', 'Hybrid']),
@@ -57,17 +58,19 @@ $factory->define(App\DedicatedServer::class, function (Faker\Generator $faker) {
         'num_ips' => $faker->numberBetween(1, 16),
         'platform_os' => $faker->randomElement(['Linux', 'Windows', 'Macintosh']),
         'rating' => $faker->randomFloat(null, 1, 5),
+        'views' => $faker->numberBetween(1, 1000),
         'other_info' => $faker->paragraph
     ];
 });
 
 $factory->define(App\VPSServer::class, function (Faker\Generator $faker) {
     return [
+        'server_type' => 'vps',
         'name' => $faker->word,
         'url' => $faker->domainName,
         'location' => $faker->randomElement(['Europe', 'America', 'Asia', 'Other']),
-        'server_price' => $faker->numberBetween(1, 250),
-        'setup_price' => $faker->numberBetween(1,25),
+        'server_price' => $faker->randomFloat(null, 1, 250),
+        'setup_price' => $faker->randomFloat(null, 1, 25),
         'ram_type' => $faker->randomElement(['DDR3', 'DDR4', 'ECC']),
         'ram_size' => $faker->numberBetween(1,48),
         'hdd_type' => $faker->randomElement(['HDD', 'SSD', 'Hybrid']),
@@ -79,6 +82,7 @@ $factory->define(App\VPSServer::class, function (Faker\Generator $faker) {
         'num_ips' => $faker->numberBetween(1, 16),
         'platform_os' => $faker->randomElement(['Linux', 'Windows', 'Macintosh']),
         'rating' => $faker->randomFloat(null, 1, 5),
+        'views' => $faker->numberBetween(1, 1000),
         'other_info' => $faker->paragraph
     ];
 });
@@ -94,11 +98,12 @@ $factory->define(App\Contact::class, function (Faker\Generator $faker) {
 
 $factory->define(App\CloudServer::class, function (Faker\Generator $faker) {
     return [
+        'server_type' => 'cloud',
         'name' => $faker->word,
         'url' => $faker->domainName,
         'location' => $faker->randomElement(['Europe', 'America', 'Asia', 'Other']),
-        'server_price' => $faker->numberBetween(1, 250),
-        'setup_price' => $faker->numberBetween(1,25),
+        'server_price' => $faker->randomFloat(null, 1, 640),
+        'server_price_hr' => $faker->randomFloat(null, 0.007, 0.952),
         'ram_type' => $faker->randomElement(['DDR3', 'DDR4', 'ECC']),
         'ram_size' => $faker->numberBetween(1,48),
         'hdd_type' => $faker->randomElement(['HDD', 'SSD', 'Hybrid']),
@@ -110,6 +115,7 @@ $factory->define(App\CloudServer::class, function (Faker\Generator $faker) {
         'num_ips' => $faker->numberBetween(1, 16),
         'platform_os' => $faker->randomElement(['Linux', 'Windows', 'Macintosh']),
         'rating' => $faker->randomFloat(null, 1, 5),
+        'views' => $faker->numberBetween(1, 1000),
         'other_info' => $faker->paragraph
     ];
 });

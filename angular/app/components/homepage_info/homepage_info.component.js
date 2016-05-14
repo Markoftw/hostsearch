@@ -1,11 +1,21 @@
 class HomepageInfoController{
-    constructor(){
+    constructor(API, ToastService){
         'ngInject';
 
-        //
+        this.API = API;
+        this.ToastService = ToastService;
     }
 
     $onInit(){
+        this.loading = true;
+        this.info = '';
+        this.API.one('home/items').get()
+            .then((response) => {
+                this.info = response.data.data;
+                this.loading = false;
+            }, (error) => {
+                this.ToastService.error(error);
+            });
     }
 }
 

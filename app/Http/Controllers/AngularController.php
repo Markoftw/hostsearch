@@ -23,10 +23,4 @@ class AngularController extends Controller
     {
         return response()->success(['sample', 'of', 'jwt', 'protected', 'data' => ['response', 'from', 'API',]]);
     }
-
-    public function protectedUsername()
-    {
-        $user = JWTAuth::parseToken()->authenticate();
-        return response()->success($user->name);
-    }
 }

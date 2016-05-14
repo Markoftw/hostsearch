@@ -8,7 +8,7 @@ class DedicatedServer extends Model
 {
     protected $table = 'dedicated_servers';
     
-    protected $fillable = ['name', 'url', 'location', 'server_price', 'setup_price', 'ram_type', 'ram_size', 'had_type', 'hdd_size', 'cpu_version', 'cpu_cores', 'cpu_power', 'bandwidth_tb', 'num_ips', 'platform_os', 'other_info'];
+    protected $fillable = ['name', 'url', 'location', 'server_price', 'setup_price', 'ram_type', 'ram_size', 'had_type', 'hdd_size', 'cpu_version', 'cpu_cores', 'cpu_power', 'bandwidth_tb', 'num_ips', 'platform_os', 'views', 'other_info'];
     
     protected $hidden = [];
 

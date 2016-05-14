@@ -36,6 +36,8 @@ class VPSController extends Controller
         ]);
 
         $check = VPSServer::with('provider')->find($request->server_id);
+        $check->views++;
+        $check->save();
 
         if (!$check) {
             return response()->error('Server does not exist', 422);

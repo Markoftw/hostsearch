@@ -17,12 +17,14 @@
                 <span class="md-subhead">HDD: {{ vm.server_info.hdd_size }}GB, type: {{ server.hdd_type }}</span>
                 <span class="md-subhead">OS: {{ vm.server_info.platform_os }}</span>
                 <span class="md-subhead">Bandwidth: {{ vm.server_info.bandwidth_tb }}TB</span>
+                <span class="md-subhead">Views: {{ vm.server_info.views }}</span>
             </md-card-title-text>
             <md-card-title-media>
                 <div class="md-media-lg card-media"></div>
             </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
+            <md-button>Add to favorites</md-button>
             <md-button>Order</md-button>
         </md-card-actions>
     </md-card>
