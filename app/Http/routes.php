@@ -34,19 +34,22 @@ $api->group(['middleware' => ['api']], function ($api) {
     $api->get('sample/test', 'AngularController@protectedData');
 
     // Advanced Search Routes...
-    $api->get('dedicated/all', 'DedicatedController@showAll');
-    $api->get('dedicated/show', 'DedicatedController@showOne');
-    $api->get('vps/all', 'VPSController@showAll');
-    $api->get('vps/show', 'VPSController@showOne');
+    $api->get('dedicated/all', 'Servers\DedicatedController@showAll');
+    $api->get('dedicated/show', 'Servers\DedicatedController@showOne');
+    $api->get('vps/all', 'Servers\VPSController@showAll');
+    $api->get('vps/show', 'Servers\VPSController@showOne');
+    $api->get('cloud/all', 'Servers\CloudController@showAll');
+    $api->get('cloud/show', 'Servers\CloudController@showOne');
 
     // About Page Routes...
     $api->post('about/new', 'ContactController@store');
 
     // git information
-    $api->get('git/status', 'AngularController@gitStatus');
+    $api->get('git/status', 'HomeController@gitStatus');
 
     // home page data
-    $api->get('home/items', 'AngularController@homeData');
+    $api->get('home/items', 'HomeController@homeData');
+    $api->get('home/tweets', 'HomeController@tweets');
     
 });
 
@@ -57,14 +60,17 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     $api->group(['prefix' => 'server'], function ($api){
         $api->get('cpu/load', 'ServerController@cpuLoad');
         $api->get('cpu/average', 'ServerController@cpuAverage');
-        $api->get('ram/used', 'ServerController@ramUsed');
+        $api->get('ram/used', 'ServerController@getUsedMemory');
+        $api->get('storage/used', 'ServerController@getUsedStorage');
+        $api->get('threads/total', 'ServerController@numberOfThreads');
+        $api->get('users/total', 'ServerController@numberOfLoggedInUsers');
     });
     
     $api->get('sample/protected', 'AngularController@protectedData');
     //$api->get('profile/username', 'AngularController@protectedProfileUsername');
 
     $api->group(['middleware' => ['jwt.refresh']], function ($api) {
-        $api->get('profile/username', 'AngularController@protectedProfileUsername');
+        $api->get('profile/username', 'HomeController@protectedUsername');
     });
 
 });

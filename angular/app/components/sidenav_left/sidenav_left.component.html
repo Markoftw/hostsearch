@@ -9,13 +9,22 @@
     </md-toolbar>
 
     <md-menu-item>
-        <md-button ui-sref="app.landing" ng-click="vm.closeFilter('left')">HOME</md-button>
+        <md-button ui-sref="app.landing" ui-sref-active="md-raised md-primary" ng-click="vm.closeFilter('left')">
+            <md-icon md-svg-icon="img/icons/ic_home_black_24px.svg"></md-icon>
+            HOME
+        </md-button>
     </md-menu-item>
     <md-menu-item>
-        <md-button ui-sref="app.advanced_search" ng-click="vm.closeFilter('left')">ADVANCED SEARCH</md-button>
+        <md-button ui-sref="app.advanced_search" ui-sref-active="md-raised md-primary" ng-click="vm.closeFilter('left')">
+            <md-icon md-svg-icon="img/icons/ic_search_black_24px.svg"></md-icon>
+            ADVANCED SEARCH
+        </md-button>
     </md-menu-item>
     <md-menu-item>
-        <md-button ui-sref="app.about" ng-click="vm.closeFilter('left')">ABOUT</md-button>
+        <md-button ui-sref="app.about" ui-sref-active="md-raised md-primary" ng-click="vm.closeFilter('left')">
+            <md-icon md-svg-icon="img/icons/ic_info_black_24px.svg"></md-icon>
+            ABOUT
+        </md-button>
     </md-menu-item>
 
    <!-- <md-list>

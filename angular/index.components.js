@@ -1,3 +1,5 @@
+import {TweetsComponent} from './app/components/tweets/tweets.component';
+import {HomepageInfoComponent} from './app/components/homepage_info/homepage_info.component';
 import {RamInformationComponent} from './app/components/ram_information/ram_information.component';
 import {RamUsageChartComponent} from './app/components/ram_usage_chart/ram_usage_chart.component';
 import {CpuInformationComponent} from './app/components/cpu_information/cpu_information.component';
@@ -18,6 +20,8 @@ import {LoginDialogController} from './dialogs/login/login.dialog';
 import {RegisterDialogController} from './dialogs/register/register.dialog';
 
 angular.module('app.components')
+	.component('tweets', TweetsComponent)
+	.component('homepageInfo', HomepageInfoComponent)
 	.component('ramInformation', RamInformationComponent)
 	.component('ramUsageChart', RamUsageChartComponent)
 	.component('cpuInformation', CpuInformationComponent)

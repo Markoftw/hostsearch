@@ -1,21 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Servers;
 
-use App\VPSServer;
+use App\DedicatedServer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
-class VPSController extends Controller
+class DedicatedController extends Controller
 {
+
     /**
-     * Return all Virtual private servers
+     * Return all dedicated servers
      * @return mixed
      */
     public function showAll()
     {
-        $results = VPSServer::with('provider')->get();
-
+        $results = DedicatedServer::with('provider')->get();
+        
         if(count($results) > 0) {
             return response()->success($results);
         }
@@ -24,7 +26,7 @@ class VPSController extends Controller
     }
 
     /**
-     * Get a single Virtual private server
+     * Get a single Dedicated server
      * @param Request $request
      * @return mixed
      */
@@ -34,7 +36,7 @@ class VPSController extends Controller
             'server_id' => 'required|numeric'
         ]);
 
-        $check = VPSServer::with('provider')->find($request->server_id);
+        $check = DedicatedServer::with('provider')->find($request->server_id);
 
         if (!$check) {
             return response()->error('Server does not exist', 422);

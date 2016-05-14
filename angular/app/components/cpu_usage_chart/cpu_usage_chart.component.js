@@ -14,7 +14,8 @@ class CpuUsageChartController {
 
         this.conf = {
             deepWatchDataDepth: 2,
-            refreshDataOnly: false
+            refreshDataOnly: false,
+            deepWatchData: true
         };
 
         this.apiconf = {

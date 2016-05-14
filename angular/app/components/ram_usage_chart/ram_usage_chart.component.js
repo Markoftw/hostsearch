@@ -54,7 +54,7 @@ class RamUsageChartController{
             }
         };
 
-        this.data = [{values: [], key: 'RAM usage'}];
+        this.data = [{values: [], key: 'Memory usage'}];
         this.run = true;
         //var x = 0;
         var self = this;
