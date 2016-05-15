@@ -8,6 +8,7 @@ use App\VPSServer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use JWTAuth;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -18,7 +19,8 @@ class HomeController extends Controller
     public function protectedUsername()
     {
         $user = JWTAuth::parseToken()->authenticate();
-        return response()->success($user->name);
+        $time = Carbon::now();
+        return response()->success(['username' => $user->name, 'time' => $time]);
     }
 
     /**
