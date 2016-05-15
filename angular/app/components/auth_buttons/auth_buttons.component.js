@@ -22,7 +22,7 @@ class AuthButtonsController {
             if (check_token.exp > Math.floor(Date.now() / 1000)) {
                 this.API.one('profile/username').get()
                     .then((response) => {
-                        this.UserService.setUsername(response.data.data);
+                        this.UserService.setUsername(response.data.data.username);
                         this.isLogged = true;
                     });
             } else {
