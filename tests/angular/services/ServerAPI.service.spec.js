@@ -1,7 +1,7 @@
 ngDescribe({
-    name: 'Test ServerServiceService',
+    name: 'Test ServerAPIService',
     modules: 'app',
-    inject: 'ServerServiceService',
+    inject: 'ServerAPI',
     tests: function (deps) {
 
         /*it('basic test', () => {

@@ -62,6 +62,24 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('app.viewvps', {
+            url: '/vps/:id',
+            data: {},
+            views: {
+                'main@': {
+                    templateUrl: getView('show_vps')
+                }
+            }
+        })
+        .state('app.viewcloud', {
+            url: '/cloud/:id',
+            data: {},
+            views: {
+                'main@': {
+                    templateUrl: getView('show_cloud')
+                }
+            }
+        })
         .state('app.about', {
             url: '/about',
             data: {},

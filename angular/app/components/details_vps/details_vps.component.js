@@ -1,4 +1,4 @@
-class DetailsDedicatedController{
+class DetailsVpsController{
     constructor(API, ToastService, $state) {
         'ngInject';
 
@@ -11,12 +11,12 @@ class DetailsDedicatedController{
         this.loaded = false;
         this.details();
     }
-    
+
     details() {
 
         let server_id = this.$state.params.id;
 
-        this.API.all('dedicated').get('show', {
+        this.API.all('vps').get('show', {
             server_id
         }).then((response) => {
             this.server_info = response.data.data;
@@ -28,9 +28,9 @@ class DetailsDedicatedController{
     }
 }
 
-export const DetailsDedicatedComponent = {
-    templateUrl: './views/app/components/details_dedicated/details_dedicated.component.html',
-    controller: DetailsDedicatedController,
+export const DetailsVpsComponent = {
+    templateUrl: './views/app/components/details_vps/details_vps.component.html',
+    controller: DetailsVpsController,
     controllerAs: 'vm',
     bindings: {}
 };

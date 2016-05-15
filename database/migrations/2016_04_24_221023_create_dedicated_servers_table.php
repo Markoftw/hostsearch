@@ -17,6 +17,7 @@ class CreateDedicatedServersTable extends Migration
             $table->integer('server_provider_id')->unsigned()->index();
             $table->foreign('server_provider_id')->references('id')->on('server_providers')->onDelete('cascade');
             $table->string('server_type');
+            $table->string('icon');
             $table->string('name');
             $table->string('url');
             $table->string('location');

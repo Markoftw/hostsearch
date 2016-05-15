@@ -29,10 +29,8 @@
                 </div>
                 <div ng-if="!vm.loading" ng-repeat="server in vm.info.popular">
                     <md-menu-item>
-                        <md-button ui-sref="app.viewdedicated({ id: server.id })">
-                            <md-icon ng-if="server.server_type == 'dedicated'" md-svg-icon="img/icons/ic_storage_black_24px.svg" hide-xs></md-icon>
-                            <md-icon ng-if="server.server_type == 'vps'" md-svg-icon="img/icons/ic_list_black_24px.svg" hide-xs></md-icon>
-                            <md-icon ng-if="server.server_type == 'cloud'" md-svg-icon="img/icons/ic_cloud_black_24px.svg" hide-xs></md-icon>
+                        <md-button ui-sref="app.view{{ server.server_type }}({ id: server.id })">
+                            <md-icon md-svg-icon="img/icons/{{ server.icon }}" hide-xs></md-icon>
                             {{ server.cpu_version }} | {{ server.ram_size }}GB | {{ server.hdd_size }}GB {{ server.hdd_type }} | {{ server.bandwidth_tb }}TB | {{ server.server_price | currency }}
                         </md-button>
                     </md-menu-item>
@@ -53,10 +51,8 @@
                 </div>
                 <div ng-if="!vm.loading" ng-repeat="server in vm.info.recent">
                     <md-menu-item>
-                        <md-button ui-sref="app.viewdedicated({ id: server.id })">
-                            <md-icon ng-if="server.server_type == 'dedicated'" md-svg-icon="img/icons/ic_storage_black_24px.svg" hide-xs></md-icon>
-                            <md-icon ng-if="server.server_type == 'vps'" md-svg-icon="img/icons/ic_list_black_24px.svg" hide-xs></md-icon>
-                            <md-icon ng-if="server.server_type == 'cloud'" md-svg-icon="img/icons/ic_cloud_black_24px.svg" hide-xs></md-icon>
+                        <md-button ui-sref="app.view{{ server.server_type }}({ id: server.id })">
+                            <md-icon md-svg-icon="img/icons/{{ server.icon }}" hide-xs></md-icon>
                             {{ server.cpu_version }} | {{ server.ram_size }}GB | {{ server.hdd_size }}GB {{ server.hdd_type }} | {{ server.bandwidth_tb }}TB | {{ server.server_price | currency }}
                         </md-button>
                     </md-menu-item>

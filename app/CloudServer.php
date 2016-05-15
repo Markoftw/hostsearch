@@ -8,7 +8,7 @@ class CloudServer extends Model
 {
     protected $table = 'cloud_servers';
 
-    protected $fillable = ['name', 'url', 'location', 'server_price', 'server_price_hr', 'ram_type', 'ram_size', 'had_type', 'hdd_size', 'cpu_version', 'cpu_cores', 'cpu_power', 'bandwidth_tb', 'num_ips', 'platform_os', 'views', 'other_info'];
+    protected $fillable = ['server_type', 'icon', 'name', 'url', 'location', 'server_price', 'server_price_hr', 'ram_type', 'ram_size', 'had_type', 'hdd_size', 'cpu_version', 'cpu_cores', 'cpu_power', 'bandwidth_tb', 'num_ips', 'platform_os', 'views', 'other_info'];
 
     protected $hidden = [];
 

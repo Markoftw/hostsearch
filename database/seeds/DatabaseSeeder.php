@@ -12,12 +12,19 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserTableSeeder::class);
-        factory(App\ServerProvider::class, 30)->create()->each(function($u) {
-            $u->dedicated()->save(factory(App\DedicatedServer::class)->make());
-            $u->vps()->save(factory(App\VPSServer::class)->make());
-            $u->cloud()->save(factory(App\CloudServer::class)->make());
+        factory(App\ServerProvider::class, 10)->create()->each(function($u) {
+            $u->dedicated()->saveMany(factory(App\DedicatedServer::class, 2)->make());
+            $u->vps()->saveMany(factory(App\VPSServer::class, 2)->make());
+            $u->cloud()->saveMany(factory(App\CloudServer::class, 2)->make());
         });
         
-        factory(App\Contact::class, 10)->create();
+        factory(App\Contact::class, 5)->create();
+
+        factory(App\User::class, 5)->create()->each(function($u) {
+            $u->articles()->saveMany(factory(App\News::class, 2)->make());
+        });
+        
+        factory(App\Comments::class, 15)->create();
+
     }
 }

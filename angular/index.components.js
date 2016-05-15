@@ -1,3 +1,5 @@
+import {DetailsCloudComponent} from './app/components/details_cloud/details_cloud.component';
+import {DetailsVpsComponent} from './app/components/details_vps/details_vps.component';
 import {TweetsComponent} from './app/components/tweets/tweets.component';
 import {HomepageInfoComponent} from './app/components/homepage_info/homepage_info.component';
 import {RamInformationComponent} from './app/components/ram_information/ram_information.component';
@@ -20,6 +22,8 @@ import {LoginDialogController} from './dialogs/login/login.dialog';
 import {RegisterDialogController} from './dialogs/register/register.dialog';
 
 angular.module('app.components')
+	.component('detailsCloud', DetailsCloudComponent)
+	.component('detailsVps', DetailsVpsComponent)
 	.component('tweets', TweetsComponent)
 	.component('homepageInfo', HomepageInfoComponent)
 	.component('ramInformation', RamInformationComponent)
