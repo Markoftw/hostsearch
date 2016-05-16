@@ -12,9 +12,9 @@
                 <span class="md-subhead">Location: {{ vm.server_info.location }}</span>
                 <span class="md-subhead">Price: {{ vm.server_info.server_price | currency }}</span>
                 <span class="md-subhead">Setup fee: {{ vm.server_info.setup_price | currency }}</span>
-                <span class="md-subhead">RAM: {{ vm.server_info.ram_size }}GB, type: {{ server.ram_type }}</span>
+                <span class="md-subhead">RAM: {{ vm.server_info.ram_size }}GB, type: {{ vm.server_info.ram_type }}</span>
                 <span class="md-subhead">CPU: {{ vm.server_info.cpu_power }}GHz</span>
-                <span class="md-subhead">HDD: {{ vm.server_info.hdd_size }}GB, type: {{ server.hdd_type }}</span>
+                <span class="md-subhead">HDD: {{ vm.server_info.hdd_size }}GB, type: {{ vm.server_info.hdd_type }}</span>
                 <span class="md-subhead">OS: {{ vm.server_info.platform_os }}</span>
                 <span class="md-subhead">Bandwidth: {{ vm.server_info.bandwidth_tb }}TB</span>
                 <span class="md-subhead">Views: {{ vm.server_info.views }}</span>

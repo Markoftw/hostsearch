@@ -7,26 +7,27 @@
             <md-icon md-svg-icon="img/icons/arrow-back.svg"></md-icon>
         </md-button>
     </md-toolbar>
-
-    <md-menu-item>
-        <md-button ui-sref="app.landing" ui-sref-active="md-raised md-primary" ng-click="vm.closeFilter('left')">
-            <md-icon md-svg-icon="img/icons/ic_home_black_24px.svg"></md-icon>
-            HOME
-        </md-button>
-    </md-menu-item>
-    <md-menu-item>
-        <md-button ui-sref="app.advanced_search" ui-sref-active="md-raised md-primary" ng-click="vm.closeFilter('left')">
-            <md-icon md-svg-icon="img/icons/ic_search_black_24px.svg"></md-icon>
-            ADVANCED SEARCH
-        </md-button>
-    </md-menu-item>
-    <md-menu-item>
-        <md-button ui-sref="app.about" ui-sref-active="md-raised md-primary" ng-click="vm.closeFilter('left')">
-            <md-icon md-svg-icon="img/icons/ic_info_black_24px.svg"></md-icon>
-            ABOUT
-        </md-button>
-    </md-menu-item>
-
+    <div hide-gt-sm>
+        <md-menu-item>
+            <md-button ui-sref="app.landing" ui-sref-active="md-raised md-primary" ng-click="vm.closeFilter('left')">
+                <md-icon md-svg-icon="img/icons/ic_home_black_24px.svg"></md-icon>
+                HOME
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ui-sref="app.advanced_search" ui-sref-active="md-raised md-primary" ng-click="vm.closeFilter('left')">
+                <md-icon md-svg-icon="img/icons/ic_search_black_24px.svg"></md-icon>
+                ADVANCED SEARCH
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ui-sref="app.about" ui-sref-active="md-raised md-primary" ng-click="vm.closeFilter('left')">
+                <md-icon md-svg-icon="img/icons/ic_info_black_24px.svg"></md-icon>
+                ABOUT
+            </md-button>
+        </md-menu-item>
+        <md-divider></md-divider>
+    </div>
    <!-- <md-list>
         <md-list-item>
             <md-button ui-sref="app.landing" ng-click="vm.closeFilter('left')" flex>HOME</md-button>
@@ -38,5 +39,186 @@
             <md-button ui-sref="app.contact" ng-click="vm.closeFilter('left')" flex>CONTACT</md-button>
         </md-list-item>
     </md-list>-->
-    <md-divider></md-divider>
+    <div ng-if="vm.loggedIn">
+        <md-toolbar class="md-accent">
+            <md-button ng-disabled="true" class="md-toolbar-tools">
+                Dashboards - Account
+            </md-button>
+        </md-toolbar>
+        <md-menu-item>
+            <md-button ui-sref="app.profile.profile" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_person_black_24px.svg"></md-icon>
+                Profile
+            </md-button>
+        </md-menu-item>
+        <md-toolbar class="md-accent">
+            <md-button ng-disabled="true" class="md-toolbar-tools">
+                Favorites
+            </md-button>
+        </md-toolbar>
+        <md-menu-item>
+            <md-button ui-sref="app.profile.dedicated" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_storage_black_24px.svg"></md-icon>
+                Dedicated servers
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ui-sref="app.profile.virtual" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_list_black_24px.svg"></md-icon>
+                Virtual private servers
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ui-sref="app.profile.cloud" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_cloud_black_24px.svg"></md-icon>
+                Cloud servers
+            </md-button>
+        </md-menu-item>
+        <md-toolbar class="md-accent">
+            <md-button ng-disabled="true" class="md-toolbar-tools">
+                Payments
+            </md-button>
+        </md-toolbar>
+        <md-menu-item>
+            <md-button ui-sref="app.profile.purchases" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_receipt_black_24px.svg"></md-icon>
+                Purchases
+            </md-button>
+        </md-menu-item>
+        <md-toolbar class="md-accent">
+            <md-button ng-disabled="true" class="md-toolbar-tools">
+                Other
+            </md-button>
+        </md-toolbar>
+        <md-menu-item>
+            <md-button ui-sref="app.profile.calendar" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_date_range_black_24px.svg"></md-icon>
+                Calendar
+            </md-button>
+        </md-menu-item>
+        <md-divider></md-divider>
+        <md-menu-item>
+            <md-button ui-sref="app.profile.messages" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_message_black_24px.svg"></md-icon>
+                Messages
+            </md-button>
+        </md-menu-item>
+        <md-divider></md-divider>
+        <md-menu-item>
+            <md-button ui-sref="app.profile.settings" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_settings_black_24px.svg"></md-icon>
+                Settings
+            </md-button>
+        </md-menu-item>
+        <md-divider></md-divider>
+    </div>
+    <div ng-if="vm.admin">
+        <md-toolbar class="md-accent">
+            <md-button ng-disabled="true" class="md-toolbar-tools">
+                Dashboards - Admin
+            </md-button>
+        </md-toolbar>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.project" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_timeline_black_24px.svg"></md-icon>
+                Project
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.system" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_computer_black_24px.svg"></md-icon>
+                System
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.analytics" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_insert_chart_black_24px.svg"></md-icon>
+                Analytics
+            </md-button>
+        </md-menu-item>
+        <md-toolbar class="md-accent">
+            <md-button ng-disabled="true" class="md-toolbar-tools">
+                Servers
+            </md-button>
+        </md-toolbar>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.dedicated" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_storage_black_24px.svg"></md-icon>
+                Dedicated servers
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.virtual" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_list_black_24px.svg"></md-icon>
+                Virtual private servers
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.cloud" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_cloud_black_24px.svg"></md-icon>
+                Cloud servers
+            </md-button>
+        </md-menu-item>
+        <md-toolbar class="md-accent">
+            <md-button ng-disabled="true" class="md-toolbar-tools">
+                Community
+            </md-button>
+        </md-toolbar>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.users" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_people_black_24px.svg"></md-icon>
+                User management
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.news" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_forum_black_24px.svg"></md-icon>
+                News management
+            </md-button>
+        </md-menu-item>
+        <md-toolbar class="md-accent">
+            <md-button ng-disabled="true" class="md-toolbar-tools">
+                Payments
+            </md-button>
+        </md-toolbar>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.invoices" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_receipt_black_24px.svg"></md-icon>
+                Invoices
+            </md-button>
+        </md-menu-item>
+        <md-toolbar class="md-accent">
+            <md-button ng-disabled="true" class="md-toolbar-tools">
+                Other
+            </md-button>
+        </md-toolbar>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.calendar" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_date_range_black_24px.svg"></md-icon>
+                Calendar
+            </md-button>
+        </md-menu-item>
+        <md-divider></md-divider>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.messages" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_message_black_24px.svg"></md-icon>
+                Messages
+            </md-button>
+        </md-menu-item>
+        <md-divider></md-divider>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.errorlog" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_error_black_24px.svg"></md-icon>
+                Error log
+            </md-button>
+        </md-menu-item>
+        <md-divider></md-divider>
+        <md-menu-item>
+            <md-button ui-sref="app.admin.settings" ui-sref-active="md-raised md-primary">
+                <md-icon md-svg-icon="img/icons/ic_settings_black_24px.svg"></md-icon>
+                Settings
+            </md-button>
+        </md-menu-item>
+        <md-divider></md-divider>
+    </div>
 </md-sidenav>

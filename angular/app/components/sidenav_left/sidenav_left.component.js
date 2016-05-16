@@ -1,9 +1,18 @@
 class SidenavLeftController{
-    constructor(SidenavService){
+    constructor(SidenavService, $auth){
         'ngInject';
         
         this.SidenavService = SidenavService;
+        this.$auth = $auth;
+    }
+    
+    $onInit() {
+        this.loggedIn = false;
+        this.admin = true;
         
+        if(this.$auth.isAuthenticated()){
+            this.loggedIn = true;
+        }
     }
 
     closeFilter(sideId) {
@@ -17,6 +26,4 @@ export const SidenavLeftComponent = {
     controller: SidenavLeftController,
     controllerAs: 'vm',
     bindings: {}
-}
-
-
+};
