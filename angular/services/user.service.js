@@ -1,7 +1,8 @@
 export class UserService{
-    constructor(){
+    constructor($auth){
         'ngInject';
 
+        this.$auth = $auth;
         this.user = "";
     }
 
@@ -19,5 +20,12 @@ export class UserService{
         this.user = name;
     }
 
-}
+    isLoggedIn() {
+        return this.$auth.isAuthenticated();
+    }
 
+    isAdmin() {
+        return true;
+    }
+    
+}

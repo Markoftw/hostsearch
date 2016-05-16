@@ -1,24 +1,19 @@
 class SidenavLeftController{
-    constructor(SidenavService, $auth){
+    constructor(SidenavService, UserService){
         'ngInject';
         
         this.SidenavService = SidenavService;
-        this.$auth = $auth;
+        this.UserService = UserService;
     }
     
     $onInit() {
-        this.loggedIn = false;
-        this.admin = true;
-        
-        if(this.$auth.isAuthenticated()){
-            this.loggedIn = true;
-        }
+        //
     }
 
     closeFilter(sideId) {
         this.SidenavService.close(sideId);
     }
-
+    
 }
 
 export const SidenavLeftComponent = {

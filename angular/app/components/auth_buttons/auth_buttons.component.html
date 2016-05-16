@@ -1,17 +1,17 @@
 <div class="loginItems" layout="row" layout-align="center center">
     <md-progress-circular ng-if="!vm.isLogged" class="md-warn" md-mode="indeterminate" md-diameter="50"></md-progress-circular>
-    <md-menu md-position-mode="target-right target" ng-if="vm.isLoggedIn() && vm.isLogged">
+    <md-menu md-position-mode="target-right target" ng-if="vm.UserService.isLoggedIn() && vm.isLogged">
         {{ vm.getWelcome() }}
         <md-button ng-click="$mdOpenMenu()" class="md-icon-button" aria-label="Open sample menu">
            <md-icon md-menu-origin md-svg-icon="img/icons/more-vert.svg"></md-icon>
         </md-button>
         <md-menu-content width="3">
-            <md-menu-item ng-if="vm.isLoggedIn()"><md-button ui-sref="app.profile" ui-sref-active="md-raised md-primary">Profile</md-button></md-menu-item>
-            <md-menu-item ng-if="vm.isLoggedIn() && vm.isAdmin()"><md-button ui-sref="app.admin" ui-sref-active="md-raised md-primary">AdminCP</md-button></md-menu-item>
-            <md-menu-item ng-if="vm.isLoggedIn()"><md-button ng-click="vm.mdLogout()">Logout</md-button></md-menu-item>
+            <md-menu-item ng-if="vm.UserService.isLoggedIn()"><md-button ui-sref="app.profile" ui-sref-active="md-raised md-primary">Profile</md-button></md-menu-item>
+            <md-menu-item ng-if="vm.UserService.isLoggedIn() && vm.UserService.isAdmin()"><md-button ui-sref="app.admin" ui-sref-active="md-raised md-primary">AdminCP</md-button></md-menu-item>
+            <md-menu-item ng-if="vm.UserService.isLoggedIn()"><md-button ng-click="vm.mdLogout()">Logout</md-button></md-menu-item>
         </md-menu-content>
     </md-menu>
     <!--<md-button class="md-raised md-warn" ng-if="vm.getStatus()" ng-click="vm.mdLogout()">Logout</md-button>-->
-    <md-button ng-if="!vm.isLoggedIn() && vm.isLogged" ng-click="vm.mdLogin()">Login</md-button>
-    <md-button ng-if="!vm.isLoggedIn() && vm.isLogged" ng-click="vm.mdRegister()">Register</md-button>
+    <md-button ng-if="!vm.UserService.isLoggedIn() && vm.isLogged" ng-click="vm.mdLogin()">Login</md-button>
+    <md-button ng-if="!vm.UserService.isLoggedIn() && vm.isLogged" ng-click="vm.mdRegister()">Register</md-button>
 </div>

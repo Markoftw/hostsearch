@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CloudServer;
 use App\DedicatedServer;
+use App\News;
 use App\VPSServer;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -76,7 +77,9 @@ class HomeController extends Controller
      */
     private function getNews()
     {
-        return ['title' => 'News title', 'body' => 'Phasellus enim orci, interdum id augue nec, bibendum maximus augue. Nulla eu diam eget neque aliquam fringilla sit amet id nunc. Sed auctor vitae massa ut malesuada. Aenean efficitur turpis id viverra bibendum. Donec ornare, felis at lacinia facilisis, neque sapien placerat lorem, id cursus ipsum lectus et eros. Maecenas ut lacinia sem. Sed faucibus dui in tortor interdum convallis. Donec tortor est, viverra gravida volutpat nec, cursus ac tortor. Phasellus rhoncus augue in lacus suscipit, quis semper odio tempus. Nullam mauris risus, efficitur ut sollicitudin eu, lobortis in nunc. Donec rhoncus ac urna sit amet feugiat. Vivamus sagittis arcu nisi, eu viverra nibh sagittis non. Proin vitae dolor ut massa mollis tristique. Suspendisse sagittis pretium hendrerit. Quisque quis justo bibendum, aliquam nulla in, facilisis nibh.'];
+        $article = News::orderBy('created_at', 'desc')->first();
+
+        return ['title' => $article->title, 'body' => $article->content];
     }
 
     /**

@@ -52,14 +52,6 @@ class AuthButtonsController {
         this.DialogService.fromTemplate("register");
     }
 
-    isLoggedIn() {
-        return this.$auth.isAuthenticated();
-    }
-
-    isAdmin() {
-        return true;
-    }
-
     getWelcome() {
         var msg = function () {
             var msg, now = new Date();
