@@ -1,4 +1,4 @@
-export function RoutesRun($rootScope, $state, $window, $auth) {
+export function RoutesRun($rootScope, $state, $window, $auth, UserService) {
     'ngInject';
 
     let deregisterationCallback = $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams, options) {
@@ -18,10 +18,17 @@ export function RoutesRun($rootScope, $state, $window, $auth) {
                     return $state.go('app.profile');
                 }
             }
+            if (toState.data.admin_protected) {
+                /* Cancel going to login, registration and forgotten password pages after logged in */
+                if (!UserService.isAdmin()) {
+                    event.preventDefault();
+                    return $state.go('app.landing');
+                }
+            }
         }
 
     });
-    $rootScope.$on('$destroy', deregisterationCallback)
+    $rootScope.$on('$destroy', deregisterationCallback);
 
     /*$rootScope.$on('$stateChangeSuccess',function(){
         if($window.document.getElementById('top-page').scrollTop > 0) {

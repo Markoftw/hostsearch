@@ -129,11 +129,11 @@ $factory->define(App\CloudServer::class, function (Faker\Generator $faker) {
 $factory->define(App\News::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence(5),
-        'content' => $faker->paragraph
+        'content' => $faker->text(888)
     ];
 });
 
-$factory->define(App\Comments::class, function (Faker\Generator $faker) {
+$factory->define(App\Comment::class, function (Faker\Generator $faker) {
     return [
         'user_id' => function () {
             return User::orderByRaw("RAND()")->first()->id;
@@ -142,5 +142,14 @@ $factory->define(App\Comments::class, function (Faker\Generator $faker) {
             return News::orderByRaw("RAND()")->first()->id;
         },
         'comment' => $faker->paragraph
+    ];
+});
+
+$factory->define(App\Role::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'slug' => $faker->word,
+        'description' => $faker->paragraph,
+        'level' => $faker->numberBetween(1, 1000)
     ];
 });

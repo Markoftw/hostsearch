@@ -22,9 +22,10 @@ class DatabaseSeeder extends Seeder
 
         factory(App\User::class, 5)->create()->each(function($u) {
             $u->articles()->saveMany(factory(App\News::class, 2)->make());
+            $u->roles()->attach(factory(App\Role::class)->create());
         });
         
-        factory(App\Comments::class, 15)->create();
+        factory(App\Comment::class, 15)->create();
 
     }
 }

@@ -92,7 +92,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin', {
             url: '/admincp',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 'main@': {
@@ -106,7 +106,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.project', {
             url: '/project',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -117,7 +117,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.system', {
             url: '/system',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -128,7 +128,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.analytics', {
             url: '/analytics',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -139,7 +139,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.dedicated', {
             url: '/dedicated',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -150,7 +150,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.virtual', {
             url: '/virtual',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -161,7 +161,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.cloud', {
             url: '/cloud',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -172,7 +172,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.news', {
             url: '/users',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -183,7 +183,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.users', {
             url: '/users',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -194,7 +194,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.invoices', {
             url: '/invoices',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -205,7 +205,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.calendar', {
             url: '/calendar',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -216,7 +216,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.messages', {
             url: '/messages',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -227,7 +227,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.errorlog', {
             url: '/errorlog',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {
@@ -238,7 +238,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
         .state('app.admin.settings', {
             url: '/settings',
             data: {
-                auth: true
+                admin_protected: true
             },
             views: {
                 adminview: {

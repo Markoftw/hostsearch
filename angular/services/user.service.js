@@ -1,8 +1,9 @@
 export class UserService{
-    constructor($auth){
+    constructor($auth, $window){
         'ngInject';
 
         this.$auth = $auth;
+        this.$window = $window;
         this.user = "";
     }
 
@@ -25,7 +26,12 @@ export class UserService{
     }
 
     isAdmin() {
-        return true;
+        let token = this.$window.localStorage.satellizer_token;
+        if(token) {
+            let token_info = this.$auth.getPayload();
+            return !!(token_info.aud && token_info.aud === 'admin');
+        }
+        return false;
     }
     
 }

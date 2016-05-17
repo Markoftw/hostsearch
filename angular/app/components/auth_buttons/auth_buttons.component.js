@@ -1,7 +1,7 @@
 class AuthButtonsController {
     constructor(DialogService, ToastService, UserService, LoggingService, $localStorage, $state, $auth, $window, API) {
         'ngInject';
-        this.state = $state;
+        this.$state = $state;
         this.DialogService = DialogService;
         this.localStorage = $localStorage;
         this.ToastService = ToastService;
@@ -42,8 +42,8 @@ class AuthButtonsController {
 
     mdLogout() {
         this.$auth.removeToken();
-        if (this.state.current.name === 'app.profile' || this.state.current.name === 'app.admin') {
-            this.state.go('app.landing');
+        if (this.$state.includes('app.profile') || this.$state.includes('app.admin')) {
+            this.$state.go('app.landing');
         }
         this.ToastService.error('You have been logged out!');
     }

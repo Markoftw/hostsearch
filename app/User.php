@@ -32,4 +32,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(News::class); // 'App\News'
     }
+
+    /**
+     * Get all roles for the given user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles(){
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
 }
