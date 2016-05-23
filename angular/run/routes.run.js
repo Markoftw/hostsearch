@@ -20,7 +20,7 @@ export function RoutesRun($rootScope, $state, $window, $auth, UserService) {
             }
             if (toState.data.admin_protected) {
                 /* Cancel going to login, registration and forgotten password pages after logged in */
-                if (!UserService.isAdmin()) {
+                if (!$auth.isAuthenticated() && !UserService.isAdmin()) {
                     event.preventDefault();
                     return $state.go('app.landing');
                 }

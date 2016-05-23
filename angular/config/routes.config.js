@@ -170,7 +170,7 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
             }
         })
         .state('app.admin.news', {
-            url: '/users',
+            url: '/news',
             data: {
                 admin_protected: true
             },

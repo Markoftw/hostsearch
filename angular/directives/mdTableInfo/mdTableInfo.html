@@ -1,0 +1,22 @@
+<div layout="row" layout-align="space-between center">
+    <h3>Manage: {{ title }} servers</h3>
+    <md-button class="md-raised md-primary" ng-click="ctrl.createNew(title)">New</md-button>
+</div>
+<md-divider></md-divider>
+<div layout="row" layout-wrap="">
+    <md-card flex="20" ng-repeat="server in servers">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{ server.name }}</span>
+                <span class="md-subhead">{{ server.price }}</span>
+            </md-card-title-text>
+            <md-card-title-media>
+                <div class="md-media-sm card-media"></div>
+            </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-raised md-warn" ng-click="ctrl.deleteServer(title, server.name)">Delete</md-button>
+            <md-button ng-click="ctrl.editServer(title, server.name)">Edit</md-button>
+        </md-card-actions>
+    </md-card>
+</div>
