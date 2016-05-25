@@ -18,31 +18,44 @@ class ServerController extends Controller
         }
     }
 
-    public function cpuInfo()
+    public function usage()
+    {
+        $response = [
+            'cpu' => $this->cpuLoad(),
+            'ram' => $this->getUsedMemory(),
+            'hdd' => $this->getUsedStorage(),
+            'threads' => $this->numberOfThreads(),
+            'users' => $this->numberOfLoggedInUsers()
+        ];
+        
+        return response()->success($response);
+    }
+    
+    private function cpuInfo()
     {
         if($this->windows) {
-            return response()->success(['cpu' => 'E3-1230-v3']);
+            return ['cpu' => 'E3-1230-v3'];
         }
     }
 
-    public function memoryInfo()
+    private function memoryInfo()
     {
         if($this->windows) {
-            return response()->success(['total' => '123']);
+            return ['total' => '123'];
         }
     }
 
-    public function storageInfo()
+    private function storageInfo()
     {
         if($this->windows) {
-            return response()->success(['total' => '123']);
+            return ['total' => '123'];
         }
     }
     
-    public function getUsedStorage()
+    private function getUsedStorage()
     {
         if($this->windows) {
-            return response()->success(rand(0,100));
+            return rand(0,100);
         }
 
         $ds = shell_exec('df -h /');
@@ -50,27 +63,27 @@ class ServerController extends Controller
         $line = $arr_ds[1];
         $arr_data = explode('  ',$line);
         
-        return response()->success(round(intval($arr_data[6]),2));
+        return round(intval($arr_data[6]),2);
     }
 
-    public function processesInfo()
+    private function processesInfo()
     {
         if($this->windows) {
-            return response()->success(['total' => '123']);
+            return ['total' => '123'];
         }
     }
 
-    public function bandwidthInfo()
+    private function bandwidthInfo()
     {
         if($this->windows) {
-            return response()->success(['network' => '100Mbps']);
+            return ['network' => '100Mbps'];
         }
     }
 
-    public function cpuLoad()
+    private function cpuLoad()
     {
         if($this->windows) {
-            return response()->success(rand(0,100));
+            return rand(0,100);
         }
 
         $stat1 = file('/proc/stat');
@@ -87,20 +100,20 @@ class ServerController extends Controller
         $cpu = array();
         foreach($dif as $x=>$y) $cpu[$x] = round($y / $total * 100, 1);
 
-        return response()->success($cpu['user']);
+        return $cpu['user'];
     }
 
-    public function cpuAverage()
+    private function cpuAverage()
     {
         if($this->windows) {
-            return response()->success(['load' => '1.00']);
+            return ['load' => '1.00'];
         }
     }
     
-    public function getUsedMemory()
+    private function getUsedMemory()
     {
         if($this->windows) {
-            return response()->success(rand(0,100));
+            return rand(0,100);
         }
 
         $free = (string)trim(shell_exec('free'));
@@ -110,28 +123,28 @@ class ServerController extends Controller
         $mem = array_merge($mem);
         $memory_usage = $mem[2]/$mem[1]*100;
 
-        return response()->success(round($memory_usage,2));
+        return round($memory_usage,2);
     }
 
-    public function numberOfThreads()
+    private function numberOfThreads()
     {
         if($this->windows) {
-            return response()->success(rand(0,200));
+            return rand(0,200);
         }
 
         $threads = shell_exec('ps -eo nlwp | tail -n +2 | awk \'{ num_threads += $1 } END { print num_threads }\'');
 
-        return response()->success($threads);
+        return $threads;
     }
 
-    public function numberOfLoggedInUsers()
+    private function numberOfLoggedInUsers()
     {
         if($this->windows) {
-            return response()->success(rand(0,10));
+            return rand(0,10);
         }
 
         $users = shell_exec('users | wc -w');
 
-        return response()->success($users);
+        return $users;
     }
 }

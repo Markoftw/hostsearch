@@ -1,4 +1,4 @@
-class CpuUsageChartController {
+class SystemInfoController{
     constructor($scope, $interval, $q, API, ServerAPIService, $state) {
         'ngInject';
 
@@ -63,10 +63,18 @@ class CpuUsageChartController {
                 }
             }
         };
+        
+        this.optionsNumber = angular.copy(this.options);
+        this.optionsNumber.chart.yAxis.axisLabel = 'Total (#)';
+        this.optionsNumber.chart.lines.forceY = [0];
 
-        this.data = [{values: [], key: 'CPU usage'}];
+        this.dataCPU = [{values: [], key: 'CPU usage'}];
+        this.dataRAM = [{values: [], key: 'Memory usage'}];
+        this.dataHDD = [{values: [], key: 'Storage usage'}];
+        this.dataThreads = [{values: [], key: 'Threads'}];
+        this.dataUsers = [{values: [], key: 'Logged in users'}];
+
         this.run = true;
-        //var x = 0;
         var self = this;
 
         var interval = this.$interval(function () {
@@ -75,31 +83,44 @@ class CpuUsageChartController {
                 return;
             }
 
-            self.ServerAPIService.cpuLoad().then((resp) => {
+            self.ServerAPIService.apiLoad('server/usage').then((resp) => {
 
-                self.data[0].values.push({
+                self.dataCPU[0].values.push({
                     x: (new Date()).getTime(),
-                    y: resp
-                    //y: Math.random() - 0.5
+                    y: resp.cpu
                 });
-                if (self.data[0].values.length > 20) {
-                    self.data[0].values.shift();
-                }
-                //x++;
+                self.dataRAM[0].values.push({
+                    x: (new Date()).getTime(),
+                    y: resp.ram
+                });
+                self.dataHDD[0].values.push({
+                    x: (new Date()).getTime(),
+                    y: resp.hdd
+                });
+                self.dataThreads[0].values.push({
+                    x: (new Date()).getTime(),
+                    y: resp.threads
+                });
+                self.dataUsers[0].values.push({
+                    x: (new Date()).getTime(),
+                    y: resp.users
+                });
+                if (self.dataCPU[0].values.length > 20) self.dataCPU[0].values.shift();
+                if (self.dataRAM[0].values.length > 20) self.dataRAM[0].values.shift();
+                if (self.dataHDD[0].values.length > 20) self.dataHDD[0].values.shift();
+                if (self.dataThreads[0].values.length > 20) self.dataThreads[0].values.shift();
+                if (self.dataUsers[0].values.length > 20) self.dataUsers[0].values.shift();
 
             });
 
-            //self.$scope.$apply(); // update chart
-        }, 2000);
+        }, 5000);
 
     }
-
-    
 }
 
-export const CpuUsageChartComponent = {
-    templateUrl: './views/app/components/cpu_usage_chart/cpu_usage_chart.component.html',
-    controller: CpuUsageChartController,
+export const SystemInfoComponent = {
+    templateUrl: './views/app/components/system_info/system_info.component.html',
+    controller: SystemInfoController,
     controllerAs: 'vm',
     bindings: {}
 };

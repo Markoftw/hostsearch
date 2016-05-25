@@ -6,19 +6,15 @@ export class ServerAPIService{
         this.$q = $q;
     }
 
-    cpuLoad() {
+    apiLoad(path) {
         var deferred = this.$q.defer();
-        this.API.one('server/cpu/load').get()
+        this.API.one(path).get()
             .then((response) => {
                 deferred.resolve(response.data.data);
             }, (error) => {
                 deferred.reject("Error: request returned status " + error);
             });
         return deferred.promise;
-    }
-    
-    cpuAverage() {
-        
     }
     
 }

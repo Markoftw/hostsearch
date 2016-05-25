@@ -57,13 +57,8 @@ $api->group(['middleware' => ['api']], function ($api) {
 $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
 
     // server information
-    $api->group(['prefix' => 'server'], function ($api){
-        $api->get('cpu/load', 'ServerController@cpuLoad');
-        $api->get('cpu/average', 'ServerController@cpuAverage');
-        $api->get('ram/used', 'ServerController@getUsedMemory');
-        $api->get('storage/used', 'ServerController@getUsedStorage');
-        $api->get('threads/total', 'ServerController@numberOfThreads');
-        $api->get('users/total', 'ServerController@numberOfLoggedInUsers');
+   $api->group(['prefix' => 'server'], function ($api){
+        $api->get('usage', 'ServerController@usage');
     });
     
     $api->get('sample/protected', 'AngularController@protectedData');
