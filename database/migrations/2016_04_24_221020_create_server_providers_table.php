@@ -16,6 +16,7 @@ class CreateServerProvidersTable extends Migration
             $table->increments('id');
             $table->string('provider_name');
             $table->string('website');
+            $table->string('logo');
             $table->string('open_year')->nullable();
             $table->string('slogan')->nullable();
             $table->string('description')->nullable();

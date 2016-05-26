@@ -134,7 +134,7 @@ class ServerController extends Controller
 
         $threads = shell_exec('ps -eo nlwp | tail -n +2 | awk \'{ num_threads += $1 } END { print num_threads }\'');
 
-        return $threads;
+        return str_replace('\n', '', $threads);
     }
 
     private function numberOfLoggedInUsers()
@@ -145,6 +145,6 @@ class ServerController extends Controller
 
         $users = shell_exec('users | wc -w');
 
-        return $users;
+        return str_replace('\n', '', $users);
     }
 }

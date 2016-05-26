@@ -34,6 +34,7 @@ $factory->define(App\ServerProvider::class, function (Faker\Generator $faker) {
     return [
         'provider_name' => $faker->company,
         'website' => $faker->domainName,
+        'logo' => $faker->domainName,
         'open_year' => $faker->year,
         'slogan' => $faker->paragraph,
         'description' => $faker->paragraph,
@@ -151,5 +152,12 @@ $factory->define(App\Role::class, function (Faker\Generator $faker) {
         'slug' => $faker->word,
         'description' => $faker->paragraph,
         'level' => $faker->numberBetween(1, 1000)
+    ];
+});
+
+$factory->define(App\Favorite::class, function (Faker\Generator $faker) {
+    return [
+        'server_id' => $faker->numberBetween(1,20),
+        'server_type' => $faker->randomElement(['dedicated', 'vps', 'cloud']),
     ];
 });

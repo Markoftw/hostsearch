@@ -40,4 +40,13 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
+    /**
+     * Get all favorites for the given user
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class); // 'App\Favorite'
+    }
 }

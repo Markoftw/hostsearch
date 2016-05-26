@@ -1,30 +1,39 @@
 class MdTableInfoController {
-    constructor($scope, LoggingService) {
+    constructor($scope, LoggingService, API, ToastService) {
         'ngInject';
 
         this.LogginService = LoggingService;
+        this.API = API;
 
-        $scope.servers = [
-            {name: 'serv1', price: 1},
-            {name: 'serv2', price: 2},
-            {name: 'serv3', price: 3},
-            {name: 'serv4', price: 4},
-            {name: 'serv5', price: 5},
-            {name: 'serv6', price: 6}
-        ];
-
-        LoggingService.debug($scope.title);
-
+        $scope.loading = true;
+        $scope.servers = [];
+        
+        let url = 'dedicated/all';
+        
+        if($scope.title === 'Cloud') {
+            url = 'cloud/all';
+        } else if ($scope.title === 'Virtual') {
+            url = 'vps/all';
+        }
+        
+        API.one(url).get()
+            .then((response) => {
+                $scope.servers = response.data.data;
+                $scope.loading = false;
+            }, (error) => {
+                $scope.loading = false;
+                ToastService.error("Error: request returned status " + error);
+            });
     }
 
     deleteServer(type, id) {
         this.LogginService.log("delete: " + type + " " + id);
     }
-    
+
     editServer(type, id) {
         this.LogginService.log("edit: " + type + " " + id);
     }
-    
+
     createNew(type) {
         this.LogginService.log("new: " + type);
     }
@@ -46,7 +55,7 @@ class MdTableInfoController {
     }
 }
 
-export function MdTableInfoDirective(){
+export function MdTableInfoDirective() {
     return {
         restrict: 'EA',
         controller: MdTableInfoController,
@@ -55,7 +64,7 @@ export function MdTableInfoDirective(){
             title: '@' // @ Attr binding (string) , = two-way (model), & callback (model)
         },
         templateUrl: './views/directives/mdTableInfo/mdTableInfo.html',
-        link: function(scope, element, attrs, controllers){
+        link: function (scope, element, attrs, controllers) {
             scope.title = attrs.title;
             element.on('click', function () {
                 //element.html('You clicked me!');

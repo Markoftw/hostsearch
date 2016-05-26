@@ -3,20 +3,25 @@
     <md-button class="md-raised md-primary" ng-click="ctrl.createNew(title)">New</md-button>
 </div>
 <md-divider></md-divider>
-<div layout="row" layout-wrap="">
+<div flex-xs="100" flex-sm="100" flex-gt-sm="70" flex-offset-gt-sm="15" layout="row" ng-if="loading">
+    <span flex></span>
+    <md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+    <span flex></span>
+</div>
+<div layout="row" layout-wrap="" ng-if="!loading">
     <md-card flex="20" ng-repeat="server in servers">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">{{ server.name }}</span>
-                <span class="md-subhead">{{ server.price }}</span>
+                <span class="md-subhead">{{ server.server_price | currency }}</span>
             </md-card-title-text>
             <md-card-title-media>
                 <div class="md-media-sm card-media"></div>
             </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-raised md-warn" ng-click="ctrl.deleteServer(title, server.name)">Delete</md-button>
-            <md-button ng-click="ctrl.editServer(title, server.name)">Edit</md-button>
+            <md-button class="md-raised md-warn" ng-click="ctrl.deleteServer(title, server.id)">Delete</md-button>
+            <md-button ng-click="ctrl.editServer(title, server.id)">Edit</md-button>
         </md-card-actions>
     </md-card>
 </div>

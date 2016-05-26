@@ -14,7 +14,7 @@ class AdvSearchController {
         this.servers = '';
         this.loaded = false;
 
-        this.sliders = {priceSlider: 500, ramSlider: 0.5, hddSlider: 120, cpuSlider: 0.5, bwSlider: 1};
+        this.sliders = {priceSlider: 500, ramSlider: 0.5, hddSlider: 120, cpuSlider: 0.5, bwSlider: 1, ipSlider: 1};
         this.locations = {europe: false, america: false, asia: false, other: false};
         this.ram = {ddr4: false, ddr3: false, ecc: false};
         this.hdd = {ssd: false, hdd: false, hybrid: false};

@@ -1,3 +1,4 @@
+import {ProfileSettingsComponent} from './app/components/profile_settings/profile_settings.component';
 import {SystemInfoComponent} from './app/components/system_info/system_info.component';
 import {DetailsCloudComponent} from './app/components/details_cloud/details_cloud.component';
 import {DetailsVpsComponent} from './app/components/details_vps/details_vps.component';
@@ -19,6 +20,7 @@ import {LoginDialogController} from './dialogs/login/login.dialog';
 import {RegisterDialogController} from './dialogs/register/register.dialog';
 
 angular.module('app.components')
+	.component('profileSettings', ProfileSettingsComponent)
     .component('systemInfo', SystemInfoComponent)
     .component('detailsCloud', DetailsCloudComponent)
     .component('detailsVps', DetailsVpsComponent)
