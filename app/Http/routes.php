@@ -21,16 +21,17 @@ Route::group(['middleware' => ['web']], function () {
 
 //public API routes
 $api->group(['middleware' => ['api']], function ($api) {
-
-    // Authentication Routes...
-    $api->post('auth/login', 'Auth\AuthController@login');
-    $api->post('auth/register', 'Auth\AuthController@register');
-
-    // Password Reset Routes...
-    $api->post('auth/password/email', 'Auth\PasswordResetController@sendResetLinkEmail');
-    $api->get('auth/password/verify', 'Auth\PasswordResetController@verify');
-    $api->post('auth/password/reset', 'Auth\PasswordResetController@reset');
-
+    
+    $api->group(['prefix' => 'auth'], function ($api){
+        // Authentication Routes...
+        $api->post('login', 'Auth\AuthController@login');
+        $api->post('register', 'Auth\AuthController@register');
+        // Password Reset Routes...
+        $api->post('password/email', 'Auth\PasswordResetController@sendResetLinkEmail');
+        $api->get('password/verify', 'Auth\PasswordResetController@verify');
+        $api->post('password/reset', 'Auth\PasswordResetController@reset');
+    });
+    
     $api->get('sample/test', 'AngularController@protectedData');
 
     // Advanced Search Routes...
@@ -55,6 +56,8 @@ $api->group(['middleware' => ['api']], function ($api) {
 
 //protected API routes with JWT (must be logged in)
 $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
+
+    $api->post('auth/password/change', 'Auth\PasswordResetController@changePassword');
 
     // server information
    $api->group(['prefix' => 'server'], function ($api){
