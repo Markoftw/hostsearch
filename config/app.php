@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => 'http://servfinder.marefx.com',
+    'url' => 'http://hostsearch.marefx.com',
 
     /*
     |--------------------------------------------------------------------------

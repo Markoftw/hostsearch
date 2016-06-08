@@ -202,6 +202,17 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('app.admin.reports', {
+            url: '/reports',
+            data: {
+                admin_protected: true
+            },
+            views: {
+                adminview: {
+                    templateUrl: getAdminView('reports')
+                }
+            }
+        })
         .state('app.admin.calendar', {
             url: '/calendar',
             data: {

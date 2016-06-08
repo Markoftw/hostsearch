@@ -21,7 +21,6 @@ Route::group(['middleware' => ['web']], function () {
 
 //public API routes
 $api->group(['middleware' => ['api']], function ($api) {
-    
     $api->group(['prefix' => 'auth'], function ($api){
         // Authentication Routes...
         $api->post('login', 'Auth\AuthController@login');
@@ -51,24 +50,27 @@ $api->group(['middleware' => ['api']], function ($api) {
     // home page data
     $api->get('home/items', 'HomeController@homeData');
     $api->get('home/tweets', 'HomeController@tweets');
-    
 });
 
 //protected API routes with JWT (must be logged in)
 $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
-
+    // User profile routes
     $api->post('auth/password/change', 'Auth\PasswordResetController@changePassword');
+    $api->post('profile/favorites/dedicated', 'FavoritesController@dedicated');
+    $api->post('profile/favorites/vps', 'FavoritesController@vps');
+    $api->post('profile/favorites/cloud', 'FavoritesController@cloud');
 
-    // server information
-   $api->group(['prefix' => 'server'], function ($api){
+    // Favorites
+    $api->post('favorites/{type}/{server_id}', 'FavotiresController@add');
+
+    // Server information
+    $api->group(['prefix' => 'server'], function ($api){
         $api->get('usage', 'ServerController@usage');
     });
     
     $api->get('sample/protected', 'AngularController@protectedData');
-    //$api->get('profile/username', 'AngularController@protectedProfileUsername');
 
     $api->group(['middleware' => ['jwt.refresh']], function ($api) {
         $api->get('profile/username', 'HomeController@protectedUsername');
     });
-
 });

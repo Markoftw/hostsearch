@@ -27,7 +27,7 @@ class AuthButtonsController {
                     });
             } else {
                 this.$auth.removeToken();
-                this.ToastService.error('Token expired, please log in!');
+                this.ToastService.show('Welcome back!');
                 this.isLogged = true;
             }
         } else {
