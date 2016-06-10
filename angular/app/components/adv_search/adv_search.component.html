@@ -7,8 +7,26 @@
                         <span class="md-headline">Filter your results</span>
                     </md-card-title-text>
                 </md-card-title>
-                <md-divider></md-divider>
             </div>
+            <md-divider></md-divider>
+            <div layout="column" class="switches">
+                <div layout="row" layout-align="space-between center">
+                    <span class="md-subhead">Dedicated servers</span>
+                    <md-switch ng-model="vm.server_types.dedi" aria-label="Dedicated" class="md-primary">
+                    </md-switch>
+                </div>
+                <div layout="row" layout-align="space-between center">
+                    <span class="md-subhead">Virtual private servers</span>
+                    <md-switch ng-model="vm.server_types.vps" aria-label="VPS" class="md-primary">
+                    </md-switch>
+                </div>
+                <div layout="row" layout-align="space-between center">
+                    <span class="md-subhead">Cloud servers</span>
+                    <md-switch ng-model="vm.server_types.cloud" aria-label="Cloud" class="md-primary">
+                    </md-switch>
+                </div>
+            </div>
+            <md-divider></md-divider>
             <div>
                 <md-card-title>
                     <md-card-title-text>
@@ -27,8 +45,8 @@
                         </md-checkbox>
                     </md-card-title-text>
                 </md-card-title>
-                <md-divider></md-divider>
             </div>
+            <md-divider></md-divider>
             <div>
                 <md-card-title>
                     <md-card-title-text>
@@ -40,8 +58,8 @@
                         </md-slider-container>
                     </md-card-title-text>
                 </md-card-title>
-                <md-divider></md-divider>
             </div>
+            <md-divider></md-divider>
             <div>
                 <md-card-title>
                     <md-card-title-text>
@@ -63,8 +81,8 @@
                         </md-slider-container>
                     </md-card-title-text>
                 </md-card-title>
-                <md-divider></md-divider>
             </div>
+            <md-divider></md-divider>
             <div>
                 <md-card-title>
                     <md-card-title-text>
@@ -86,8 +104,8 @@
                         </md-slider-container>
                     </md-card-title-text>
                 </md-card-title>
-                <md-divider></md-divider>
             </div>
+            <md-divider></md-divider>
             <div>
                 <md-card-title>
                     <md-card-title-text>
@@ -99,8 +117,8 @@
                         </md-slider-container>
                     </md-card-title-text>
                 </md-card-title>
-                <md-divider></md-divider>
             </div>
+            <md-divider></md-divider>
             <div>
                 <md-card-title>
                     <md-card-title-text>
@@ -112,21 +130,21 @@
                         </md-slider-container>
                     </md-card-title-text>
                 </md-card-title>
-                <md-divider></md-divider>
             </div>
+            <md-divider></md-divider>
             <div>
                 <md-card-title>
                     <md-card-title-text>
                         <md-slider-container>
-                            <span class="md-title search-title-1">At least {{ vm.sliders.ipSlider }} IPs</span>
+                            <span class="md-title search-title-1">At least {{ vm.sliders.ipSlider }} IP</span>
                             <md-slider flex ng-model="vm.sliders.ipSlider" min="1" max="100" aria-label="blue"
                                        id="ip-slider" class="md-primary">
                             </md-slider>
                         </md-slider-container>
                     </md-card-title-text>
                 </md-card-title>
-                <md-divider></md-divider>
             </div>
+            <md-divider></md-divider>
             <div>
                 <md-card-title>
                     <md-card-title-text>
@@ -145,8 +163,8 @@
                         </md-checkbox>
                     </md-card-title-text>
                 </md-card-title>
-                <md-divider></md-divider>
             </div>
+            <md-divider></md-divider>
             <div>
                 <md-card-title>
                     <md-card-title-text>
@@ -154,8 +172,8 @@
                         Total servers: {{ vm.servers.length }}
                     </md-card-title-text>
                 </md-card-title>
-                <md-divider></md-divider>
             </div>
+            <md-divider></md-divider>
             <div>
                 <md-card-title>
                     <md-card-title-text>
@@ -169,11 +187,11 @@
         <md-progress-circular ng-if="!vm.loaded" class="md-primary" md-mode="indeterminate" md-diameter="100"
                               flex-offset-gt-sm="50"></md-progress-circular>
         <div ng-if="vm.loaded" ng-repeat="server in filtered=(vm.servers | moreThan:vm.sliders | chkLoc:vm.locations | chkRam:vm.ram |
-                  chkPlatform:vm.platform | chkHdd:vm.hdd) | orderBy:'+server_price' | startFrom:vm.currPage*vm.pageLimit | limitTo: vm.pageLimit">
+                  chkPlatform:vm.platform | chkHdd:vm.hdd | serverTypes:vm.server_types) | orderBy:'+server_price' | startFrom:vm.currPage*vm.pageLimit | limitTo: vm.pageLimit">
             <md-card md-whiteframe="6">
                 <md-card-title flex="initial">
                     <md-card-title-text>
-                        <span class="md-headline">Provider: {{ server.provider.provider_name }}</span>
+                        <span class="md-headline">Provider: {{ server.provider.provider_name }} | Server type: {{ server.server_type }}</span>
                         <md-divider></md-divider>
                         <span class="md-subhead">Location: {{ server.location }}</span>
                         <span class="md-subhead">Price: {{ server.server_price | currency }}</span>

@@ -1,10 +1,9 @@
 class AdvSearchController {
-    constructor($scope, API, LoggingService, ToastService, $window, $anchorScroll, $location, $document) {
+    constructor($scope, API, ToastService, $window, $anchorScroll, $location, $document) {
         'ngInject';
 
         this.$scope = $scope;
         this.API = API;
-        this.LoggingService = LoggingService;
         this.ToastService = ToastService;
         this.$window = $window;
         this.$anchorScroll = $anchorScroll;
@@ -19,11 +18,11 @@ class AdvSearchController {
         this.ram = {ddr4: false, ddr3: false, ecc: false};
         this.hdd = {ssd: false, hdd: false, hybrid: false};
         this.platform = {unix: false, windows: false, macintosh: false, other: false};
-
+        this.server_types = {dedi:true, vps: true, cloud: true};
     }
 
     $onInit() {
-        this.API.one('dedicated/all').get()
+        this.API.one('servers/all').get()
             .then((response) => {
                 this.servers = response.data.data;
                 this.loaded = true;
@@ -31,7 +30,6 @@ class AdvSearchController {
                 this.currPage = 0;
             }, (error) => {
                 this.ToastService.error("Server list could not be loaded");
-                this.LoggingService.warn(error);
             });
     }
 

@@ -10,6 +10,7 @@ import {ChkPlatformFilter} from './filters/chkPlatform.filter';
 import {ChkHddFilter} from './filters/chkHdd.filter';
 import {UcFirstFilter} from './filters/ucfirst.filter';
 import {MoreThanFilter} from './filters/moreThan.filter';
+import {ServerTypesFilter} from './filters/serverTypes.filter';
 
 angular.module('app.filters')
 	.filter('startFrom', StartFromFilter)
@@ -23,4 +24,5 @@ angular.module('app.filters')
 	.filter('chkPlatform', ChkPlatformFilter)
 	.filter('chkHdd', ChkHddFilter)
 	.filter('moreThan', MoreThanFilter)
+	.filter('serverTypes', ServerTypesFilter)
 	.filter('ucfirst', UcFirstFilter);

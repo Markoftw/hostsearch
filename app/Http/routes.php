@@ -40,6 +40,8 @@ $api->group(['middleware' => ['api']], function ($api) {
     $api->get('vps/show', 'Servers\VPSController@showOne');
     $api->get('cloud/all', 'Servers\CloudController@showAll');
     $api->get('cloud/show', 'Servers\CloudController@showOne');
+    $api->get('servers/all', 'ProviderController@showAllServers');
+    $api->get('providers/all', 'ProviderController@showAllProviders');
 
     // About Page Routes...
     $api->post('about/new', 'ContactController@store');
