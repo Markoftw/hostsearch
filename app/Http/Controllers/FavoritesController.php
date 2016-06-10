@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use JWTAuth;
 
-class FavotiresController extends Controller
+class FavoritesController extends Controller
 {
     public function dedicated()
     {

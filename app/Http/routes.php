@@ -61,7 +61,7 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     $api->post('profile/favorites/cloud', 'FavoritesController@cloud');
 
     // Favorites
-    $api->post('favorites/{type}/{server_id}', 'FavotiresController@add');
+    $api->post('favorites/{type}/{server_id}', 'FavoritesController@add');
 
     // Server information
     $api->group(['prefix' => 'server'], function ($api){

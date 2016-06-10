@@ -18,6 +18,10 @@ class ServerController extends Controller
         }
     }
 
+    /**
+     * Get all server usage
+     * @return mixed
+     */
     public function usage()
     {
         $response = [
@@ -30,7 +34,11 @@ class ServerController extends Controller
         
         return response()->success($response);
     }
-    
+
+    /**
+     * Processor information
+     * @return array
+     */
     private function cpuInfo()
     {
         if($this->windows) {
@@ -38,6 +46,10 @@ class ServerController extends Controller
         }
     }
 
+    /**
+     * Memory (RAM) information
+     * @return array
+     */
     private function memoryInfo()
     {
         if($this->windows) {
@@ -45,13 +57,54 @@ class ServerController extends Controller
         }
     }
 
+    /**
+     * Storage (HDD) information
+     * @return array
+     */
     private function storageInfo()
     {
         if($this->windows) {
             return ['total' => '123'];
         }
     }
-    
+
+    /**
+     * Get a list of all current running processes
+     * @return array
+     */
+    private function processesInfo()
+    {
+        if($this->windows) {
+            return ['total' => '123'];
+        }
+    }
+
+    /**
+     * Get the current bandwidth speed
+     * @return array
+     */
+    private function bandwidthInfo()
+    {
+        if($this->windows) {
+            return ['network' => '100Mbps'];
+        }
+    }
+
+    /**
+     * Get the current bandwidth speed
+     * @return string
+     */
+    private function bandwidthUsage()
+    {
+        if($this->windows){
+            return rand(0,100) . "Mbps";
+        }
+    }
+
+    /**
+     * Get the current hard drive usage
+     * @return float|int
+     */
     private function getUsedStorage()
     {
         if($this->windows) {
@@ -66,20 +119,10 @@ class ServerController extends Controller
         return round(intval($arr_data[6]),2);
     }
 
-    private function processesInfo()
-    {
-        if($this->windows) {
-            return ['total' => '123'];
-        }
-    }
-
-    private function bandwidthInfo()
-    {
-        if($this->windows) {
-            return ['network' => '100Mbps'];
-        }
-    }
-
+    /**
+     * Get the current CPU usage
+     * @return int|mixed
+     */
     private function cpuLoad()
     {
         if($this->windows) {
@@ -109,7 +152,11 @@ class ServerController extends Controller
             return ['load' => '1.00'];
         }
     }
-    
+
+    /**
+     * Get the current RAM usage
+     * @return float|int
+     */
     private function getUsedMemory()
     {
         if($this->windows) {
@@ -126,6 +173,10 @@ class ServerController extends Controller
         return round($memory_usage,2);
     }
 
+    /**
+     * Get the total number of current threads
+     * @return int|mixed
+     */
     private function numberOfThreads()
     {
         if($this->windows) {
@@ -137,6 +188,10 @@ class ServerController extends Controller
         return str_replace('\n', '', $threads);
     }
 
+    /**
+     * Get the current logged in users (SSH)
+     * @return int|mixed
+     */
     private function numberOfLoggedInUsers()
     {
         if($this->windows) {

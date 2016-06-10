@@ -12,7 +12,7 @@ class PasswordResetTest extends TestCase
         $user = factory(App\User::class)->create();
 
         $this->checkEmailContent([
-            'title'   => 'Reset your Server Finder password',
+            'title'   => 'Reset your Hosting search password',
             'email'   => $user->email,
             'content' => 'reset your password', //contains
         ]);

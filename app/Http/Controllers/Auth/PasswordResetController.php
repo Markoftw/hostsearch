@@ -12,6 +12,11 @@ use App\Http\Controllers\Controller;
 
 class PasswordResetController extends Controller
 {
+    /**
+     * Create password reset token and send it in the email
+     * @param Request $request
+     * @return mixed
+     */
     public function sendResetLinkEmail(Request $request)
     {
         $this->validate($request, [
@@ -32,12 +37,17 @@ class PasswordResetController extends Controller
         Mail::send('auth.reset_link', compact('email', 'token'), function ($mail) use ($email) {
             $mail->to($email)
             ->from('support@marefx.com')
-            ->subject('Reset your Server Finder password');
+            ->subject('Reset your Hosting search password');
         });
 
         return response()->success(true);
     }
 
+    /**
+     * Verify if token and email exists in database
+     * @param Request $request
+     * @return mixed
+     */
     public function verify(Request $request)
     {
         $this->validate($request, [
@@ -56,6 +66,11 @@ class PasswordResetController extends Controller
         return response()->success(true);
     }
 
+    /**
+     * Reset forgotten password
+     * @param Request $request
+     * @return mixed
+     */
     public function reset(Request $request)
     {
         $this->validate($request, [
@@ -74,6 +89,11 @@ class PasswordResetController extends Controller
         return response()->success(true);
     }
 
+    /**
+     * Change password in profile
+     * @param Request $request
+     * @return mixed
+     */
     public function changePassword(Request $request)
     {
         $this->validate($request, [

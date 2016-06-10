@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use Auth;
-use Illuminate\Database\Eloquent\Collection;
 use JWTAuth;
 use App\User;
 use Illuminate\Http\Request;
@@ -11,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
+    /**
+     * Attempting to login user with JWT
+     * @param Request $request
+     * @return mixed
+     */
     public function login(Request $request)
     {
         $this->validate($request, [
@@ -46,6 +50,11 @@ class AuthController extends Controller
         return response()->success(compact('user', 'token'));
     }
 
+    /**
+     * Attempting to register user
+     * @param Request $request
+     * @return mixed
+     */
     public function register(Request $request)
     {
         $this->validate($request, [
@@ -67,6 +76,11 @@ class AuthController extends Controller
         return response()->success(compact('user', 'token'));
     }
 
+    /**
+     * Check if user is admin
+     * @param User $collection
+     * @return bool
+     */
     private function isAdmin(User $collection)
     {
         $admin = $collection->roles()->get()->contains(function ($key, $value) {

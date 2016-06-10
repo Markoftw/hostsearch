@@ -10,6 +10,11 @@ use App\Http\Requests;
 class ContactController extends Controller
 {
 
+    /**
+     * Storing a contact message (about page)
+     * @param Request $request
+     * @return mixed
+     */
     public function store(Request $request)
     {
         $this->validate($request, [

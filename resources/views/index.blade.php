@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{!! elixir('css/app.css') !!}">
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 
-    <title>Hosting search - Find for your server needs, ratings and special offers</title>
+    <title>Hosting search - Find your server needs, ratings and special offers</title>
 
     <!--[if lte IE 10]>
     <script type="text/javascript">document.location.href = '/unsupported-browser'</script>
