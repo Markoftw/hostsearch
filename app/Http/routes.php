@@ -54,7 +54,7 @@ $api->group(['middleware' => ['api']], function ($api) {
     $api->get('home/tweets', 'HomeController@tweets');
 });
 
-//protected API routes with JWT (must be logged in)
+// Protected API routes with JWT (must be logged in)
 $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     // User profile routes
     $api->post('auth/password/change', 'Auth\PasswordResetController@changePassword');
@@ -72,6 +72,7 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     
     $api->get('sample/protected', 'AngularController@protectedData');
 
+    // Token refresh routes
     $api->group(['middleware' => ['jwt.refresh']], function ($api) {
         $api->get('profile/username', 'HomeController@protectedUsername');
     });

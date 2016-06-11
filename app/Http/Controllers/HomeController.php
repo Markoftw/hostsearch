@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use JWTAuth;
 use Carbon\Carbon;
+use Thujohn\Twitter\Facades\Twitter;
 
 class HomeController extends Controller
 {
@@ -64,11 +65,9 @@ class HomeController extends Controller
      */
     public function tweets()
     {
-        $tweets = 'tweets';
+        $tweets = Twitter::getUserTimeline(['screen_name' => 'ByronBernstein', 'count' => 5, 'format' => 'array']);
 
-        return response()->success([
-            'tweets' => $tweets
-        ]);
+        return ['tweets' => $tweets];
     }
 
     /**
