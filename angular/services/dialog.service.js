@@ -3,6 +3,7 @@ export class DialogService {
         'ngInject';
 
         this.$mdDialog = $mdDialog
+        this.data = '';
     }
 
     fromTemplate(template, options) {
@@ -59,5 +60,15 @@ export class DialogService {
             .cancel('Cancel');
 
         return this.$mdDialog.show(prompt);
+    }
+    
+    setData(data){
+        this.data = data;
+    }
+    
+    getData(){
+        if(this.data){
+            return this.data;
+        }
     }
 }

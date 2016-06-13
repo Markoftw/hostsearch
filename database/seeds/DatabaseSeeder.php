@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
         });
         
         factory(App\Comment::class, 15)->create();
+        
+        factory(App\Report::class, 10)->create();
 
     }
 }

@@ -24,8 +24,8 @@
             </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
-            <md-button>Report</md-button>
-            <md-button>Add to favorites</md-button>
+            <md-button ng-click="vm.report(vm.server_info.id)">Report</md-button>
+            <md-button ng-click="vm.favorite(vm.server_info.id)">Add to favorites</md-button>
             <md-button>Order</md-button>
         </md-card-actions>
     </md-card>

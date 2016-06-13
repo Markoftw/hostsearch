@@ -13,7 +13,6 @@ class TweetsController{
             .then((response) => {
                 this.tweets = response.data.tweets;
                 this.loading = false;
-                console.log(response.data.tweets);
             }, (error) => {
                 this.ToastService.error(error);
             });

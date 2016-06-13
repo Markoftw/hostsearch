@@ -14,6 +14,13 @@ use JWTAuth;
 
 class FavoritesController extends Controller
 {
+    private $jwt_user;
+
+    public function __construct(User $user)
+    {
+        $this->jwt_user = $user->findOrFail(JWTAuth::parseToken()->authenticate()->id);
+    }
+
     public function dedicated()
     {
 
@@ -29,17 +36,40 @@ class FavoritesController extends Controller
 
     }
 
-    public function add(User $user, $type, $server_id)
+    /**
+     * Add server to user favorites
+     * @param $server_type
+     * @param $server_id
+     * @return mixed
+     */
+    public function store($server_type, $server_id)
     {
-        $jwt = JWTAuth::parseToken()->authenticate();
-        $user = $user->findOrFail($jwt->sub);
-        if ($user) {
-            $user->favorites()->create([
+        $saved = $this->jwt_user->favorites()->create([
                 'server_id' => $server_id,
-                'server_type' => $type
+                'server_type' => $server_type
             ]);
+        if($saved){
+            return response()->success(true);
         }
+        return response()->error('Could not add to favorites!');
+    }
 
-        return response()->success(true);
+    /**
+     * Remove server from user favorites
+     * @param $server_type
+     * @param $server_id
+     * @return mixed
+     */
+    public function destroy($server_type, $server_id)
+    {
+        $removed = Favorite::whereUserId($this->jwt_user->id)
+            ->where('server_id', '=', $server_id)
+            ->where('server_type', '=', $server_type)
+            ->delete();
+
+        if($removed){
+            return response()->success(true);
+        }
+        return response()->error('Could not remove from favorites!');
     }
 }

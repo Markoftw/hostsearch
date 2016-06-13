@@ -1,10 +1,11 @@
 class DetailsCloudController{
-    constructor(API, ToastService, $state) {
+    constructor(API, ToastService, $state, DialogService) {
         'ngInject';
 
         this.API = API;
         this.$state = $state;
         this.ToastService = ToastService;
+        this.DialogService = DialogService;
     }
 
     $onInit(){
@@ -13,7 +14,6 @@ class DetailsCloudController{
     }
 
     details() {
-
         let server_id = this.$state.params.id;
 
         this.API.all('cloud').get('show', {
@@ -24,7 +24,32 @@ class DetailsCloudController{
         }, () => {
             this.$state.go('app.advanced_search');
         });
+    }
 
+    favorite(server_id) {
+        this.API.all('favorites/cloud/' + server_id + '/add').post().then(() => {
+            this.ToastService.show('Successfully added to favorites!');
+        }, (error) => {
+            //this.ToastService.error(error);
+        })
+    }
+
+    removeFavorite(server_id){
+        this.API.all('favorites/cloud/' + server_id + '/delete').post().then(() => {
+            this.ToastService.show('Removed to favorites!');
+        }, (error) => {
+            //this.ToastService.error(error);
+        })
+    }
+
+    report(server_id) {
+        let data = {
+            server_id: server_id,
+            server_type: 'cloud'
+        };
+
+        this.DialogService.setData(data);
+        this.DialogService.fromTemplate("report_server");
     }
 }
 

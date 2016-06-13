@@ -49,9 +49,12 @@ $api->group(['middleware' => ['api']], function ($api) {
     // git information
     $api->get('git/status', 'HomeController@gitStatus');
 
-    // home page data
+    // Home page data
     $api->get('home/items', 'HomeController@homeData');
     $api->get('home/tweets', 'HomeController@tweets');
+
+    // Reports
+    $api->post('reports/{server_type}/{server_id}/add', 'ReportsController@store');
 });
 
 // Protected API routes with JWT (must be logged in)
@@ -63,7 +66,8 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     $api->post('profile/favorites/cloud', 'FavoritesController@cloud');
 
     // Favorites
-    $api->post('favorites/{type}/{server_id}', 'FavoritesController@add');
+    $api->post('favorites/{server_type}/{server_id}/add', 'FavoritesController@store');
+    $api->post('favorites/{server_type}/{server_id}/delete', 'FavoritesController@destroy');
 
     // Server information
     $api->group(['prefix' => 'server'], function ($api){

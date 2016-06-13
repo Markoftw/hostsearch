@@ -208,7 +208,9 @@
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
                     <md-button>Order</md-button>
-                    <md-button ui-sref="app.viewdedicated({ id: server.id })">Details</md-button>
+                    <md-button ng-show="server.server_type === 'dedicated'" ui-sref="app.viewdedicated({ id: server.id })">Details</md-button>
+                    <md-button ng-show="server.server_type === 'vps'" ui-sref="app.viewvps({ id: server.id })">Details</md-button>
+                    <md-button ng-show="server.server_type === 'cloud'" ui-sref="app.viewcloud({ id: server.id })">Details</md-button>
                 </md-card-actions>
             </md-card>
         </div>

@@ -18,6 +18,7 @@ import {SidenavLeftComponent} from './app/components/sidenav_left/sidenav_left.c
 import {AdvSearchComponent} from './app/components/adv_search/adv_search.component';
 import {LoginDialogController} from './dialogs/login/login.dialog';
 import {RegisterDialogController} from './dialogs/register/register.dialog';
+import {ReportServerDialogController} from './dialogs/report_server/report_server.dialog';
 
 angular.module('app.components')
 	.component('profileSettings', ProfileSettingsComponent)
@@ -41,5 +42,6 @@ angular.module('app.components')
 
 
 angular.module('app.components')
+    .controller('ReportServerDialogController', ReportServerDialogController)
     .controller('RegisterDialogController', RegisterDialogController)
     .controller('LoginDialogController', LoginDialogController);

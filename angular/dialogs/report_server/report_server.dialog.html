@@ -1,0 +1,60 @@
+<style>
+    .dHeader {
+        background-color: #039BE5 !important;
+        color: white;
+        font-size: 20px;
+        padding: 1px 30px;
+    }
+    .dContent {
+        margin-top: 20px;
+    }
+    .dContent > * {
+        margin: 10px;
+    }
+    .modal-dialog{
+        width:400px; height: 400px;
+        position: absolute;
+        top:0; bottom: 0; left: 0; right: 0;
+        margin: auto
+    }
+</style>
+
+<div layout="column">
+    <md-dialog ng-controller="ReportServerDialogController as vm" class="modal-dialog">
+        <form name="reportForm" ng-submit="vm.send()">
+            <div class="md-title dHeader">
+                <h2 layout="space-between center">
+                    <span>Report server</span>
+                    <span flex></span>
+                    <md-progress-circular ng-if="vm.sending" class="md-warn" md-mode="indeterminate" md-diameter="50"></md-progress-circular>
+                </h2>
+            </div>
+            <div class="dContent">
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="vm.cb1" aria-label="Checkbox 1" class="md-primary">
+                        Price mismatch
+                    </md-checkbox>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="vm.cb2" aria-label="Checkbox 2" class="md-primary">
+                        Server no longer available
+                    </md-checkbox>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <md-checkbox ng-model="vm.cb3" aria-label="Checkbox 3" class="md-primary">
+                        Company mismatch
+                    </md-checkbox>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label for="message">Message:</label>
+                    <textarea ng-model="vm.message" md-maxlength="250" rows="5" md-select-on-focus id="message"></textarea>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <span flex></span>
+                <md-button class="md-primary md-hue-2" type="submit">Submit</md-button>
+                <md-button type="button" ng-click="vm.cancel()">Cancel</md-button>
+            </div>
+        </form>
+    </md-dialog>
+</div>

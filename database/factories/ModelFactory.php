@@ -161,3 +161,12 @@ $factory->define(App\Favorite::class, function (Faker\Generator $faker) {
         'server_type' => $faker->randomElement(['dedicated', 'vps', 'cloud']),
     ];
 });
+
+$factory->define(App\Report::class, function (Faker\Generator $faker) {
+    return [
+        'server_id' => $faker->numberBetween(1,20),
+        'server_type' => $faker->randomElement(['dedicated', 'vps', 'cloud']),
+        'errors' => $faker->numberBetween(0,7),
+        'message' => $faker->paragraph,
+    ];
+});
