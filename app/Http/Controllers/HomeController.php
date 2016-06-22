@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CloudServer;
 use App\DedicatedServer;
+use App\Favorite;
 use App\News;
 use App\VPSServer;
 use Illuminate\Http\Request;
@@ -15,13 +16,14 @@ use Thujohn\Twitter\Facades\Twitter;
 class HomeController extends Controller
 {
     /**
-     * Get logged in users username
+     * Get logged in users username and favorites
      * @return mixed
      */
-    public function protectedUsername()
+    public function protectedUser()
     {
         $user = JWTAuth::parseToken()->authenticate();
         $time = Carbon::now();
+
         return response()->success(['username' => $user->name, 'time' => $time]);
     }
 
@@ -92,13 +94,44 @@ class HomeController extends Controller
         $vps = VPSServer::orderBy($type, 'desc')->take(5)->get();
         $cloud = CloudServer::orderBy($type, 'desc')->take(5)->get();
 
-        $comined = array_merge($dedicated->toArray(), $vps->toArray(), $cloud->toArray());
+        $combined = array_merge($dedicated->toArray(), $vps->toArray(), $cloud->toArray());
 
-        $sorted = array_reverse(array_values(array_sort($comined, function ($value) use ($type) {
+        $sorted = array_reverse(array_values(array_sort($combined, function ($value) use ($type) {
             return $value[$type];
         })));
 
         return array_slice($sorted, 0, 5);
     }
 
+    /**
+     * Get user favorites
+     * @param $user_id
+     * @return array
+     */
+    private function favoredList($user_id){
+
+        $data = Favorite::whereUserId($user_id)->get();
+
+        $dedicated = [];
+        $vps = [];
+        $cloud = [];
+
+        foreach ($data as $favorite) {
+            if ($favorite['server_type'] == 'dedicated') {
+                array_push($dedicated, $favorite);
+            } else if ($favorite['server_type'] == 'vps') {
+                array_push($vps, $favorite);
+            } else if ($favorite['server_type'] == 'cloud') {
+                array_push($cloud, $favorite);
+            }
+        }
+
+        $favorites = [
+            'dedicated' => $dedicated,
+            'vps' => $vps,
+            'cloud' => $cloud
+        ];
+
+        return $favorites;
+    }
 }

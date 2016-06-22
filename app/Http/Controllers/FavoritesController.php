@@ -44,14 +44,20 @@ class FavoritesController extends Controller
      */
     public function store($server_type, $server_id)
     {
-        $saved = $this->jwt_user->favorites()->create([
+        if (!$this->isFavored($server_type, $server_id)) {
+            $saved = $this->jwt_user->favorites()->create([
                 'server_id' => $server_id,
                 'server_type' => $server_type
             ]);
-        if($saved){
-            return response()->success(true);
+
+            if ($saved) {
+                return response()->success(true);
+            }
+
+            return response()->error('Could not add to favorites!', 422);
         }
-        return response()->error('Could not add to favorites!');
+
+        return response()->error('Server already favored!', 422);
     }
 
     /**
@@ -67,9 +73,30 @@ class FavoritesController extends Controller
             ->where('server_type', '=', $server_type)
             ->delete();
 
-        if($removed){
+        if ($removed) {
             return response()->success(true);
         }
-        return response()->error('Could not remove from favorites!');
+
+        return response()->error('Could not remove from favorites!', 422);
+    }
+
+    /**
+     * Check if server is already favored by user
+     * @param $server_type
+     * @param $server_id
+     * @return mixed
+     */
+    private function isFavored($server_type, $server_id)
+    {
+        $favored = Favorite::whereUserId($this->jwt_user->id)
+            ->where('server_id', '=', $server_id)
+            ->where('server_type', '=', $server_type)
+            ->get();
+
+        if (count($favored)) {
+            return true;
+        }
+
+        return false;
     }
 }

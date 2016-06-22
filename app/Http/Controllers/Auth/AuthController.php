@@ -27,7 +27,7 @@ class AuthController extends Controller
         $user = User::where('email', $credentials['email'])->first();
 
         if ($user) {
-            if($this->isAdmin($user)) {
+            if ($this->isAdmin($user)) {
                 $customClaims = ['aud' => 'admin'];
             } else {
                 $customClaims = [];

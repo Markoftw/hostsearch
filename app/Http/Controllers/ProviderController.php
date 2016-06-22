@@ -19,7 +19,7 @@ class ProviderController extends Controller
     {
         $providers = ServerProvider::all();
 
-        if(count($providers) > 0) {
+        if (count($providers) > 0) {
             return response()->success($providers);
         }
 
@@ -36,7 +36,7 @@ class ProviderController extends Controller
         $vps = VPSServer::with('provider')->get();
         $cloud = CloudServer::with('provider')->get();
 
-        if((count($dedicated) + count($vps) + count($cloud)) > 0) {
+        if ((count($dedicated) + count($vps) + count($cloud)) > 0) {
             $merged = array_merge($dedicated->toArray(), $vps->toArray(), $cloud->toArray());
             return response()->success($merged);
         }

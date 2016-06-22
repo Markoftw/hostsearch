@@ -23,10 +23,12 @@ class AuthButtonsController {
                 this.API.one('profile/username').get()
                     .then((response) => {
                         this.UserService.setUsername(response.data.data.username);
+                        //this.$window.localStorage.setItem('favorites', angular.toJson(response.data.data.favorites));
                         this.isLogged = true;
                     });
             } else {
                 this.$auth.removeToken();
+                //this.$window.localStorage.removeItem('favorites');
                 this.ToastService.show('Welcome back!');
                 this.isLogged = true;
             }

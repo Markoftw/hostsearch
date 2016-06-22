@@ -15,28 +15,28 @@ class ReportsController extends Controller
      * 4 = wrong company
      * 8 = ...
      */
-    
-    
+
+
     public function store(Request $request, $server_type, $server_id)
     {
         $reports = 0;
-        if($request->get('price')) $reports += 1;
-        if($request->get('available')) $reports += 2;
-        if($request->get('company')) $reports += 4;
+        if ($request->get('price')) $reports += 1;
+        if ($request->get('available')) $reports += 2;
+        if ($request->get('company')) $reports += 4;
         $message = $request->get('message');
 
-        if($reports == 0 && empty($message)){
+        if ($reports == 0 && empty($message)) {
             return response()->error('Select at least one problem or describe it!', 422);
         }
 
         $report = Report::create([
-            'server_id'     => $server_id,
-            'server_type'   => $server_type,
-            'errors'        => $reports,
-            'message'       => $message
+            'server_id' => $server_id,
+            'server_type' => $server_type,
+            'errors' => $reports,
+            'message' => $message
         ]);
 
-        if($report){
+        if ($report) {
             return response()->success(true);
         }
 

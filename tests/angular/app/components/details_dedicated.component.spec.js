@@ -12,8 +12,8 @@ ngDescribe({
     },
     tests: function (deps) {
 
-        it('basic test', () => {
+        /*it('basic test', () => {
             //
-        });
+        });*/
     }
 });

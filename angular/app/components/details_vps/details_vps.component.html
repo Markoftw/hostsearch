@@ -25,7 +25,8 @@
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
             <md-button ng-click="vm.report(vm.server_info.id)">Report</md-button>
-            <md-button ng-click="vm.favorite(vm.server_info.id)">Add to favorites</md-button>
+            <md-button ng-click="vm.favorite(vm.server_info.id)" ng-show="!vm.favored && vm.$auth.isAuthenticated()">Add to favorites</md-button>
+            <md-button ng-click="vm.removeFavorite(vm.server_info.id)" ng-show="vm.favored && vm.$auth.isAuthenticated()">Remove from favorites</md-button>
             <md-button>Order</md-button>
         </md-card-actions>
     </md-card>

@@ -60,6 +60,13 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
                 'main@': {
                     templateUrl: getView('show_dedicated')
                 }
+            },
+            //params: { auth: true },
+            resolve: {
+                auth: ['$stateParams', 'UserService', function ($stateParams, UserService) {
+                    $stateParams.auth = UserService.isLoggedIn();
+                    return $stateParams.auth;
+                }]
             }
         })
         .state('app.viewvps', {
@@ -69,6 +76,12 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
                 'main@': {
                     templateUrl: getView('show_vps')
                 }
+            },
+            resolve: {
+                auth: ['$stateParams', 'UserService', function ($stateParams, UserService) {
+                    $stateParams.auth = UserService.isLoggedIn();
+                    return $stateParams.auth;
+                }]
             }
         })
         .state('app.viewcloud', {
@@ -78,6 +91,12 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
                 'main@': {
                     templateUrl: getView('show_cloud')
                 }
+            },
+            resolve: {
+                auth: ['$stateParams', 'UserService', function ($stateParams, UserService) {
+                    $stateParams.auth = UserService.isLoggedIn();
+                    return $stateParams.auth;
+                }]
             }
         })
         .state('app.about', {

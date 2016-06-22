@@ -21,7 +21,7 @@ Route::group(['middleware' => ['web']], function () {
 
 //public API routes
 $api->group(['middleware' => ['api']], function ($api) {
-    $api->group(['prefix' => 'auth'], function ($api){
+    $api->group(['prefix' => 'auth'], function ($api) {
         // Authentication Routes...
         $api->post('login', 'Auth\AuthController@login');
         $api->post('register', 'Auth\AuthController@register');
@@ -30,7 +30,7 @@ $api->group(['middleware' => ['api']], function ($api) {
         $api->get('password/verify', 'Auth\PasswordResetController@verify');
         $api->post('password/reset', 'Auth\PasswordResetController@reset');
     });
-    
+
     $api->get('sample/test', 'AngularController@protectedData');
 
     // Advanced Search Routes...
@@ -70,14 +70,14 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     $api->post('favorites/{server_type}/{server_id}/delete', 'FavoritesController@destroy');
 
     // Server information
-    $api->group(['prefix' => 'server'], function ($api){
+    $api->group(['prefix' => 'server'], function ($api) {
         $api->get('usage', 'ServerController@usage');
     });
-    
+
     $api->get('sample/protected', 'AngularController@protectedData');
 
     // Token refresh routes
     $api->group(['middleware' => ['jwt.refresh']], function ($api) {
-        $api->get('profile/username', 'HomeController@protectedUsername');
+        $api->get('profile/username', 'HomeController@protectedUser');
     });
 });

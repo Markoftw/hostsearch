@@ -10,6 +10,7 @@
         "tymon/jwt-auth": "0.5.*",
         "barryvdh/laravel-cors": "0.7.x",
         "laravelangular/generators": "2.5.x",
+        "dingo/blueprint": "0.2.x-dev",
         "dingo/api": "1.0.x@dev",
         "barryvdh/laravel-ide-helper": "^2.1",
         "thujohn/twitter": "^2.2"

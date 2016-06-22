@@ -10,7 +10,7 @@ class Favorite extends Model
 
     protected $fillable = ['server_id', 'server_type'];
 
-    protected $hidden = [];
+    protected $hidden = ['id', 'created_at', 'updated_at', 'user_id'];
 
     /**
      * Get favorite owner

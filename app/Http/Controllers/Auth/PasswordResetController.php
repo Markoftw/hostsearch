@@ -36,8 +36,8 @@ class PasswordResetController extends Controller
 
         Mail::send('auth.reset_link', compact('email', 'token'), function ($mail) use ($email) {
             $mail->to($email)
-            ->from('support@marefx.com')
-            ->subject('Reset your Hosting search password');
+                ->from('support@marefx.com')
+                ->subject('Reset your Hosting search password');
         });
 
         return response()->success(true);
@@ -56,10 +56,10 @@ class PasswordResetController extends Controller
         ]);
 
         $check = PasswordReset::whereEmail($request->email)
-        ->whereToken($request->token)
-        ->first();
+            ->whereToken($request->token)
+            ->first();
 
-        if (! $check) {
+        if (!$check) {
             return response()->error('Email does not exist', 422);
         }
 
@@ -74,8 +74,8 @@ class PasswordResetController extends Controller
     public function reset(Request $request)
     {
         $this->validate($request, [
-            'email'    => 'required|email',
-            'token'    => "required|exists:password_resets,token,email,{$request->email}",
+            'email' => 'required|email',
+            'token' => "required|exists:password_resets,token,email,{$request->email}",
             'password' => 'required|min:6|confirmed',
         ]);
 
@@ -104,14 +104,14 @@ class PasswordResetController extends Controller
 
         $user = User::whereId(JWTAuth::parseToken()->getPayload()->get('sub'))->firstOrFail();
 
-        if(!Hash::check($request->current_password, $user->password)) {
+        if (!Hash::check($request->current_password, $user->password)) {
             return response()->error('Your current password does not match!');
         }
 
-        if(Hash::check($request->password, $user->password)) {
+        if (Hash::check($request->password, $user->password)) {
             return response()->error('Please use a different password than your current one!');
         }
-        
+
         $user->password = bcrypt($request->password);
         $user->save();
 
