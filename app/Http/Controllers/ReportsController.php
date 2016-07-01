@@ -26,7 +26,7 @@ class ReportsController extends Controller
         $message = $request->get('message');
 
         if ($reports == 0 && empty($message)) {
-            return response()->error('Select at least one problem or describe it!', 422);
+            return response()->error('Select an issue or describe it', 422);
         }
 
         $report = Report::create([
@@ -40,7 +40,7 @@ class ReportsController extends Controller
             return response()->success(true);
         }
 
-        return response()->error('Report could not be sent!', 422);
+        return response()->error('Report could not be sent', 422);
     }
 
     public function show()

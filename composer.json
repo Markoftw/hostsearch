@@ -9,10 +9,10 @@
         "laravel/framework": "5.2.*",
         "tymon/jwt-auth": "0.5.*",
         "barryvdh/laravel-cors": "0.7.x",
-        "laravelangular/generators": "2.5.x",
+        "laravelangular/generators": "2.6.x",
         "dingo/blueprint": "0.2.x-dev",
         "dingo/api": "1.0.x@dev",
-        "barryvdh/laravel-ide-helper": "^2.1",
+        "barryvdh/laravel-ide-helper": "^2.2",
         "thujohn/twitter": "^2.2"
     },
     "require-dev": {
@@ -53,7 +53,9 @@
         ],
         "post-update-cmd": [
 			"php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
             "php artisan optimize"
         ]
     },

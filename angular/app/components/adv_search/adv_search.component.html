@@ -191,26 +191,30 @@
             <md-card md-whiteframe="6">
                 <md-card-title flex="initial">
                     <md-card-title-text>
-                        <span class="md-headline">Provider: {{ server.provider.provider_name }} | Server type: {{ server.server_type }}</span>
+                        <span class="md-headline">{{ server.provider.provider_name }}</span>
                         <md-divider></md-divider>
-                        <span class="md-subhead">Location: {{ server.location }}</span>
-                        <span class="md-subhead">Price: {{ server.server_price | currency }}</span>
-                        <span class="md-subhead">Setup fee: {{ server.setup_price | currency }}</span>
-                        <span class="md-subhead">RAM: {{ server.ram_size }}GB, type: {{ server.ram_type }}</span>
-                        <span class="md-subhead">CPU: {{ server.cpu_power }}GHz</span>
-                        <span class="md-subhead">HDD: {{ server.hdd_size }}GB, type: {{ server.hdd_type }}</span>
-                        <span class="md-subhead">OS: {{ server.platform_os }}</span>
-                        <span class="md-subhead">Bandwidth: {{ server.bandwidth_tb }}TB</span>
+                        <span class="md-subhead" ng-if="server.server_type === 'dedicated'">Server type: <b>Dedicated server</b></span>
+                        <span class="md-subhead" ng-if="server.server_type === 'vps'">Server type: <b>Virtual private server</b></span>
+                        <span class="md-subhead" ng-if="server.server_type === 'cloud'">Server type: <b>Cloud server</b></span>
+                        <span class="md-subhead">Location: <b>{{ server.location }}</b></span>
+                        <span class="md-subhead" ng-if="server.server_type === 'cloud'">Price: <b>{{ server.server_price_hr | currency }}/hour</b> | <b>{{ server.server_price | currency }}</b></span>
+                        <span class="md-subhead" ng-if="server.server_type === 'dedicated' || server.server_type === 'vps'">Price:  <b>{{ server.server_price | currency }}</b></span>
+                        <span class="md-subhead">Server RAM: <b>{{ server.ram_size }}GB</b></span>
+                        <span class="md-subhead" ng-if="server.server_type === 'dedicated'">CPU: <b>{{ server.cpu_version }}</b></span>
+                        <span class="md-subhead" ng-if="server.server_type === 'cloud' || server.server_type === 'vps'">CPU: <b>{{ server.cpu_cores }}</b>x <b>{{ server.cpu_power }}</b></span>
+                        <span class="md-subhead">Hard drive space: <b>{{ server.hdd_size }}GB ({{ server.hdd_type }})</b></span>
+                        <span class="md-subhead">Bandwidth: <b>{{ server.bandwidth_tb }}TB</b></span>
+                        <span class="md-subhead">Operating system: <b>{{ server.platform_os }}</b></span>
                     </md-card-title-text>
                     <md-card-title-media>
-                        <div class="md-media-lg card-media"></div>
+                        <img ng-src="{{ server.provider.logo }}" class="md-media-lg" alt="Logo">
                     </md-card-title-media>
                 </md-card-title>
                 <md-card-actions layout="row" layout-align="end center">
                     <md-button>Order</md-button>
-                    <md-button ng-show="server.server_type === 'dedicated'" ui-sref="app.viewdedicated({ id: server.id })">Details</md-button>
-                    <md-button ng-show="server.server_type === 'vps'" ui-sref="app.viewvps({ id: server.id })">Details</md-button>
-                    <md-button ng-show="server.server_type === 'cloud'" ui-sref="app.viewcloud({ id: server.id })">Details</md-button>
+                    <md-button ng-if="server.server_type === 'dedicated'" ui-sref="app.viewdedicated({ id: server.id })">Details</md-button>
+                    <md-button ng-if="server.server_type === 'vps'" ui-sref="app.viewvps({ id: server.id })">Details</md-button>
+                    <md-button ng-if="server.server_type === 'cloud'" ui-sref="app.viewcloud({ id: server.id })">Details</md-button>
                 </md-card-actions>
             </md-card>
         </div>

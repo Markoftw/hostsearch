@@ -34,7 +34,7 @@ $factory->define(App\ServerProvider::class, function (Faker\Generator $faker) {
     return [
         'provider_name' => $faker->company,
         'website' => $faker->domainName,
-        'logo' => $faker->domainName,
+        'logo' => $faker->randomElement(['http://i.imgur.com/Z2R74S6.png', 'http://i.imgur.com/P4DAlCR.png', 'http://i.imgur.com/qHts6jx.jpg']),
         'open_year' => $faker->year,
         'slogan' => $faker->paragraph,
         'description' => $faker->paragraph,

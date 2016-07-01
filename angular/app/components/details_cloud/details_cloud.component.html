@@ -7,20 +7,66 @@
     <md-card ng-if="vm.loaded" md-whiteframe="6">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">Provider: {{ vm.server_info.provider.provider_name }}</span>
+                <div layout="row" layout-align="space-between center">
+                    <span class="md-display-1">{{ vm.server_info.provider.provider_name }}</span>
+                    <span class="md-display-1" style="padding: 20px"><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                </div>
                 <md-divider></md-divider>
-                <span class="md-subhead">Location: {{ vm.server_info.location }}</span>
-                <span class="md-subhead">Price: {{ vm.server_info.server_price | currency }}</span>
-                <span class="md-subhead">Price/hr: {{ vm.server_info.server_price_hr | currency }}</span>
-                <span class="md-subhead">RAM: {{ vm.server_info.ram_size }}GB, type: {{ vm.server_info.ram_type }}</span>
-                <span class="md-subhead">CPU: {{ vm.server_info.cpu_power }}GHz</span>
-                <span class="md-subhead">HDD: {{ vm.server_info.hdd_size }}GB, type: {{ vm.server_info.hdd_type }}</span>
-                <span class="md-subhead">OS: {{ vm.server_info.platform_os }}</span>
-                <span class="md-subhead">Bandwidth: {{ vm.server_info.bandwidth_tb }}TB</span>
-                <span class="md-subhead">Views: {{ vm.server_info.views }}</span>
+                <span class="md-headline" style="padding: 8px 0 8px 0">Cloud server information</span>
+                <table class="striped">
+                    <tbody>
+                    <tr>
+                        <td>Server price | Price/hr</td>
+                        <td>{{ vm.server_info.server_price | currency }} | {{ vm.server_info.server_price_hr | currency }}/hr</td>
+                    </tr>
+                    <tr>
+                        <td>Location</td>
+                        <td>{{ vm.server_info.location }}</td>
+                    </tr>
+                    <tr>
+                        <td>RAM size | type</td>
+                        <td>{{ vm.server_info.ram_size }}GB | {{ vm.server_info.ram_type }}</td>
+                    </tr>
+                    <tr>
+                        <td>CPU | cores | speed</td>
+                        <td>{{ vm.server_info.cpu_version }} | {{ vm.server_info.cpu_cores }}x core | {{ vm.server_info.cpu_power }}GHz</td>
+                    </tr>
+                    <tr>
+                        <td>Storage size | type</td>
+                        <td>{{ vm.server_info.hdd_size }}GB | {{ vm.server_info.hdd_type }}</td>
+                    </tr>
+                    <tr>
+                        <td>Bandwidth</td>
+                        <td>{{ vm.server_info.bandwidth_tb }}TB</td>
+                    </tr>
+                    <tr>
+                        <td>Platform</td>
+                        <td>{{ vm.server_info.platform_os }}</td>
+                    </tr>
+                    <tr>
+                        <td>IPs</td>
+                        <td>{{ vm.server_info.num_ips }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div layout="row" layout-align="space-between center">
+                    <span flex></span>
+                    <span class="md-subhead" flex="15">Viewed {{ vm.server_info.views }} times</span>
+                </div>
+                <md-divider></md-divider>
+
+                <span class="md-headline" style="padding: 8px 0 8px 0">Details</span>
+                <span class="md-subhead">{{ vm.server_info.other_info }}a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a</span>
+                <md-divider></md-divider>
+                <span class="md-headline" style="padding: 8px 0 8px 0">Company</span>
+                <span class="md-subhead">{{ vm.server_info.provider.description }}</span>
+
+                <md-divider></md-divider>
+                <span class="md-headline" style="padding: 8px 0 8px 0">Reviews</span>
             </md-card-title-text>
             <md-card-title-media>
-                <div class="md-media-lg card-media"></div>
+                <img ng-src="{{ vm.server_info.provider.logo }}" class="md-media-lg" alt="Logo">
             </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
