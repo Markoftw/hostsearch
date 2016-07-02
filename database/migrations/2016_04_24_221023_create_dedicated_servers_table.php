@@ -29,6 +29,7 @@ class CreateDedicatedServersTable extends Migration
             $table->integer('hdd_size')->unsigned();
             $table->string('cpu_version');
             $table->integer('cpu_cores')->unsigned();
+            $table->integer('cpu_threads')->unsigned();
             $table->float('cpu_power')->unsigned();
             $table->integer('bandwidth_tb')->unsigned();
             $table->integer('num_ips')->unsigned();

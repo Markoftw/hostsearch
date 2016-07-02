@@ -16,24 +16,24 @@
                 <table class="striped">
                     <tbody>
                     <tr>
-                        <td>Server price | Setup fees</td>
-                        <td>{{ vm.server_info.server_price | currency }} | {{ vm.server_info.setup_price | currency }}</td>
+                        <td>Server price</td>
+                        <td>{{ vm.server_info.server_price | currency }} ({{ vm.server_info.setup_price | currency }} Setup fees)</td>
                     </tr>
                     <tr>
                         <td>Location</td>
                         <td>{{ vm.server_info.location }}</td>
                     </tr>
                     <tr>
-                        <td>RAM size | type</td>
-                        <td>{{ vm.server_info.ram_size }}GB | {{ vm.server_info.ram_type }}</td>
+                        <td>RAM</td>
+                        <td>{{ vm.server_info.ram_size }}GB ({{ vm.server_info.ram_type }})</td>
                     </tr>
                     <tr>
-                        <td>CPU | cores | speed</td>
-                        <td>{{ vm.server_info.cpu_version }} | {{ vm.server_info.cpu_cores }}x core | {{ vm.server_info.cpu_power }}GHz</td>
+                        <td>CPU</td>
+                        <td>{{ vm.server_info.cpu_cores }} cores @ {{ vm.server_info.cpu_power }}GHz</td>
                     </tr>
                     <tr>
-                        <td>Storage size | type</td>
-                        <td>{{ vm.server_info.hdd_size }}GB | {{ vm.server_info.hdd_type }}</td>
+                        <td>Storage</td>
+                        <td>{{ vm.server_info.hdd_size }}GB ({{ vm.server_info.hdd_type }})</td>
                     </tr>
                     <tr>
                         <td>Bandwidth</td>
@@ -57,7 +57,7 @@
                 <md-divider></md-divider>
 
                 <span class="md-headline" style="padding: 8px 0 8px 0">Details</span>
-                <span class="md-subhead">{{ vm.server_info.other_info }}a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a</span>
+                <span class="md-subhead">{{ vm.server_info.other_info }}</span>
                 <md-divider></md-divider>
                 <span class="md-headline" style="padding: 8px 0 8px 0">Company</span>
                 <span class="md-subhead">{{ vm.server_info.provider.description }}</span>

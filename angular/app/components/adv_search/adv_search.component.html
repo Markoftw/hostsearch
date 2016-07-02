@@ -191,7 +191,10 @@
             <md-card md-whiteframe="6">
                 <md-card-title flex="initial">
                     <md-card-title-text>
-                        <span class="md-headline">{{ server.provider.provider_name }}</span>
+                        <div layout="row" layout-align="space-between center">
+                            <span class="md-headline">{{ server.provider.provider_name }}</span>
+                            <span class="md-headline" style="padding: 5px"><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                        </div>
                         <md-divider></md-divider>
                         <span class="md-subhead" ng-if="server.server_type === 'dedicated'">Server type: <b>Dedicated server</b></span>
                         <span class="md-subhead" ng-if="server.server_type === 'vps'">Server type: <b>Virtual private server</b></span>

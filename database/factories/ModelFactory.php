@@ -58,6 +58,7 @@ $factory->define(App\DedicatedServer::class, function (Faker\Generator $faker) {
         'hdd_size' => $faker->numberBetween(120, 10000),
         'cpu_version' => $faker->word,
         'cpu_cores' => $faker->numberBetween(1, 32),
+        'cpu_threads' => $faker->numberBetween(1, 32),
         'cpu_power' => $faker->randomFloat(null, 1, 5),
         'bandwidth_tb' => $faker->numberBetween(1, 100),
         'num_ips' => $faker->numberBetween(1, 100),
