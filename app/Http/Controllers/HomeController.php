@@ -67,7 +67,7 @@ class HomeController extends Controller
      */
     public function tweets()
     {
-        $tweets = Twitter::getUserTimeline(['screen_name' => 'ByronBernstein', 'count' => 5, 'format' => 'array']);
+        $tweets = Twitter::getUserTimeline(['screen_name' => 'Google', 'count' => 5, 'format' => 'array']);
 
         return ['tweets' => $tweets];
     }

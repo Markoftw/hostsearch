@@ -21,19 +21,34 @@ class FavoritesController extends Controller
         $this->jwt_user = $user->findOrFail(JWTAuth::parseToken()->authenticate()->id);
     }
 
-    public function dedicated()
+    /**
+     * Get user favorites for profile list
+     * @param $server_type
+     * @return mixed
+     */
+    public function showAll($server_type)
     {
+        if ($server_type == 'dedicated') {
+            $result = Favorite::whereUserId($this->jwt_user->id)
+                ->join('dedicated_servers', 'favorites.server_id', '=', 'dedicated_servers.id')
+                ->join('server_providers', 'server_providers.id', '=', 'dedicated_servers.server_provider_id')
+                ->where('favorites.server_type', 'dedicated')
+                ->get();
+        } else if ($server_type == 'vps') {
+            $result = Favorite::whereUserId($this->jwt_user->id)
+                ->join('vps_servers', 'favorites.server_id', '=', 'vps_servers.id')
+                ->join('server_providers', 'server_providers.id', '=', 'vps_servers.server_provider_id')
+                ->where('favorites.server_type', 'vps')
+                ->get();
+        } else {
+            $result = Favorite::whereUserId($this->jwt_user->id)
+                ->join('cloud_servers', 'favorites.server_id', '=', 'cloud_servers.id')
+                ->join('server_providers', 'server_providers.id', '=', 'cloud_servers.server_provider_id')
+                ->where('favorites.server_type', 'cloud')
+                ->get();
+        }
 
-    }
-
-    public function vps()
-    {
-
-    }
-
-    public function cloud()
-    {
-
+        return response()->success($result);
     }
 
     /**

@@ -68,6 +68,7 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
     // Favorites
     $api->post('favorites/{server_type}/{server_id}/add', 'FavoritesController@store');
     $api->post('favorites/{server_type}/{server_id}/delete', 'FavoritesController@destroy');
+    $api->get('favorites/{server_type}/all', 'FavoritesController@showAll');
 
     // Server information
     $api->group(['prefix' => 'server'], function ($api) {

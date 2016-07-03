@@ -1,0 +1,34 @@
+<div layout="row" layout-align="space-between center">
+    <h3>Favorites: {{ title }} servers</h3>
+    <md-button class="md-raised md-warn" ng-click="ctrl.deleteAll(title)">Clear all</md-button>
+</div>
+<md-divider></md-divider>
+<div flex-xs="100" flex-sm="100" flex-gt-sm="70" flex-offset-gt-sm="15" layout="row" ng-if="loading">
+    <span flex></span>
+    <md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+    <span flex></span>
+</div>
+<div layout="row" layout-wrap="" ng-if="!loading">
+    <md-card flex="20" ng-if="servers.length > 0" ng-repeat="server in servers">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{ server.name }}</span>
+                <span class="md-subhead">{{ server.server_price | currency }}</span>
+            </md-card-title-text>
+            <md-card-title-media>
+                <img ng-src="{{ server.logo }}" class="md-media-sm" alt="Logo">
+            </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-raised md-primary" ng-click="ctrl.viewServer(title, server.server_id)">View</md-button>
+            <md-button class="md-raised md-warn" ng-click="ctrl.deleteServer(title, server.server_id)">Remove</md-button>
+        </md-card-actions>
+    </md-card>
+    <md-card flex="" ng-if="servers.length === 0">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">You have no favored {{ title }} servers!</span>
+            </md-card-title-text>
+        </md-card-title>
+    </md-card>
+</div>
