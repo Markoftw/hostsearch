@@ -9,7 +9,7 @@
             <md-card-title-text>
                 <div layout="row" layout-align="space-between center">
                     <span class="md-display-1">{{ vm.server_info.provider.provider_name }} | {{ vm.server_info.name }}</span>
-                    <span class="md-display-1" style="padding: 20px"><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></span>
+                    <div class="md-display-1" md-ratings-star rating="{{ vm.server_info.rating }}" ratingsize="20px"></div>
                 </div>
                 <md-divider></md-divider>
                 <span class="md-headline" style="padding: 8px 0 8px 0">Virtual private server information</span>
