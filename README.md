@@ -1,8 +1,5 @@
-## Server finder build with Laravel 5.2, AngularJS 1.5 and Material
+## Hostsearch build with Laravel 5.2, AngularJS 1.5 and Material design
 
 ## Demo
 
-An online <a href="http://www.marefx.com/" target="_blank">demo</a> is available.
-
-## Issues, questions and feature requests
-Open a new issue, I'd love to help.
+An online <a href="http://hostsearch.marefx.com/" target="_blank">demo</a> is available.
